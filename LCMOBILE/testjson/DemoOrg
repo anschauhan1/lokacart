@@ -1,0 +1,404 @@
+{
+  "products": [
+    {
+      "Leafy Vegetables": [
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio559876.mp3",
+          "quantity": "1000",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage293008.jpg",
+          "name": "200 grams of palak",
+          "stockManagement": "true",
+          "unitRate": "29.0",
+          "description": "",
+          "id": "403"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio110658.mp3",
+          "quantity": "200000",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/Collard-Greens-Bundle.jpg",
+          "name": "collards",
+          "stockManagement": "true",
+          "unitRate": "12.0",
+          "description": "",
+          "id": "493"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio988957.mp3",
+          "quantity": "5",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/lettuce.jpg",
+          "name": "Lettuce",
+          "stockManagement": "true",
+          "unitRate": "100.0",
+          "description": "",
+          "id": "408"
+        },
+        {
+          "quantity": "6000",
+          "name": "methi",
+          "stockManagement": "true",
+          "unitRate": "25.0",
+          "description": "",
+          "id": "517"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio113513.mp3",
+          "quantity": "306",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/mustard-greens_vert_2066797565.jpg",
+          "name": "Mustard Greens",
+          "stockManagement": "true",
+          "unitRate": "85.0",
+          "description": "",
+          "id": "492"
+        },
+        {
+          "quantity": "5000",
+          "name": "palak",
+          "stockManagement": "true",
+          "unitRate": "20.0",
+          "description": "green leagy",
+          "id": "676"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio860007.mp3",
+          "quantity": "178",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/Spinach.jpg",
+          "name": "spinach",
+          "stockManagement": "true",
+          "unitRate": "30.0",
+          "description": "",
+          "id": "491"
+        }
+      ]
+    },
+    {
+      "Vegetables": [
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio34320.mp3",
+          "quantity": "9982",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage624711.jpg",
+          "name": "200 gms of ladyfinger",
+          "stockManagement": "true",
+          "unitRate": "43.0",
+          "description": "",
+          "id": "207"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio211694.mp3",
+          "quantity": "19798",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage938110.jpg",
+          "name": "250 gms of Radish",
+          "stockManagement": "true",
+          "unitRate": "21.0",
+          "description": "Farm Fresh Radishes",
+          "id": "410"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio52118.mp3",
+          "quantity": "495",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage299055.jpg",
+          "name": "500 gms cabbage",
+          "stockManagement": "true",
+          "unitRate": "123.0",
+          "description": "",
+          "id": "359"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio476602.mp3",
+          "quantity": "500",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/carrot-fb.jpg",
+          "name": "Carrot",
+          "stockManagement": "true",
+          "unitRate": "12.0",
+          "description": "very tasty",
+          "id": "411"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio367734.mp3",
+          "quantity": "499",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage670073.jpg",
+          "name": "Ginger",
+          "stockManagement": "true",
+          "unitRate": "48.0",
+          "description": "",
+          "id": "292"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio520003.mp3",
+          "quantity": "4999",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/onion_fennel_bisque.jpg",
+          "name": "onion",
+          "stockManagement": "true",
+          "unitRate": "40.0",
+          "description": "",
+          "id": "450"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio273615.mp3",
+          "quantity": "78",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage334597.jpg",
+          "name": "Tomato",
+          "stockManagement": "true",
+          "unitRate": "33.0",
+          "description": "",
+          "id": "295"
+        }
+      ]
+    },
+    {
+      "Fruits": [
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio145069.mp3",
+          "quantity": "11",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/Table_grapes_on_white.jpg",
+          "name": "2 kg of grapes",
+          "stockManagement": "true",
+          "unitRate": "100.0",
+          "description": "Lots of little balls to munch.\n\nGrow together in a bunch.\n\nCarefully picked from the tree.\n\nTasty grapes for you and me!",
+          "id": "399"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio85783.mp3",
+          "quantity": "0",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage118670.jpg",
+          "name": "2 kg of Strawberry",
+          "stockManagement": "true",
+          "unitRate": "100.0",
+          "description": "",
+          "id": "287"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio952335.mp3",
+          "quantity": "0",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage673363.jpg",
+          "name": "apple",
+          "stockManagement": "true",
+          "unitRate": "11.0",
+          "description": "an apple is good for health",
+          "id": "205"
+        },
+        {
+          "quantity": "6",
+          "name": "jackfruit",
+          "stockManagement": "true",
+          "unitRate": "56.0",
+          "description": "",
+          "id": "498"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio559855.mp3",
+          "quantity": "985",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage734522.jpg",
+          "name": "Kiwi",
+          "stockManagement": "true",
+          "unitRate": "12.0",
+          "description": "",
+          "id": "409"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio712812.mp3",
+          "quantity": "20",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage368224.jpg",
+          "name": "Papaya",
+          "stockManagement": "true",
+          "unitRate": "56.0",
+          "description": "",
+          "id": "293"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio217903.mp3",
+          "quantity": "998",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/13858240-Jackfruit-meat-peeled-Stock-Photo.jpg",
+          "name": "peeled jackfruit",
+          "stockManagement": "true",
+          "unitRate": "10.0",
+          "description": "",
+          "id": "472"
+        }
+      ]
+    },
+    {
+      "pulses": [
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio124388.mp3",
+          "quantity": "5000",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage914528.jpg",
+          "name": "wheat",
+          "stockManagement": "true",
+          "unitRate": "35.0",
+          "description": "golden wheat",
+          "id": "513"
+        }
+      ]
+    },
+    {
+      "Dairy": [
+        {
+          "quantity": "3",
+          "name": "1 kg Paneer",
+          "stockManagement": "true",
+          "unitRate": "280.0",
+          "description": "Pure quality paneer will be delivered in Pune, 1 kg at Rs. 280 only",
+          "id": "504"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio533823.mp3",
+          "quantity": "0",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/Paneer_545.jpg",
+          "name": "200 grams of Paneer",
+          "stockManagement": "true",
+          "unitRate": "340.0",
+          "description": "paneer hdhdhh....hsjdhbdhdbsbsn sbbdvhs hs 0384+",
+          "id": "407"
+        },
+        {
+          "quantity": "57",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/752.jpg",
+          "name": "500 grams of khoa",
+          "stockManagement": "true",
+          "unitRate": "120.0",
+          "description": "",
+          "id": "487"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio461933.mp3",
+          "quantity": "0",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/iStock_000006937653Small.jpg",
+          "name": "Butter",
+          "stockManagement": "true",
+          "unitRate": "555.0",
+          "description": "",
+          "id": "463"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio519955.mp3",
+          "quantity": "24",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/cream_1163907468.jpg",
+          "name": "clotted cream",
+          "stockManagement": "true",
+          "unitRate": "50.0",
+          "description": "",
+          "id": "486"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio551168.mp3",
+          "quantity": "0",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/curd.JPG",
+          "name": "curd",
+          "stockManagement": "true",
+          "unitRate": "20.0",
+          "description": "",
+          "id": "489"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio544389.mp3",
+          "quantity": "182",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/ghee.jpg",
+          "name": "Ghee",
+          "stockManagement": "true",
+          "unitRate": "200.0",
+          "description": "Ghee is a class of clarified butter that originated in ancient India and is commonly used in South Asian and Arabic cuisines, traditional medicine, and religious rituals.",
+          "id": "488"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio704165.mp3",
+          "quantity": "246",
+          "name": "Natural Honey",
+          "stockManagement": "true",
+          "unitRate": "190.0",
+          "description": "Pure natural honey collected from jungle. Rs. 190 only for half kg packing",
+          "id": "505"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio685337.mp3",
+          "quantity": "0",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage548432.jpg",
+          "name": "Soya Paneer",
+          "stockManagement": "true",
+          "unitRate": "88.0",
+          "description": "",
+          "id": "469"
+        },
+        {
+          "quantity": "356",
+          "name": "test",
+          "stockManagement": "true",
+          "unitRate": "78.0",
+          "description": "",
+          "id": "675"
+        }
+      ]
+    },
+    {
+      "Grocery": [
+        {
+          "quantity": "969",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/Spinach.jpg",
+          "name": "tea",
+          "stockManagement": "true",
+          "unitRate": "60.0",
+          "description": "herbal tea is better than normal one",
+          "id": "501"
+        }
+      ]
+    },
+    {
+      "Icecream": [
+        {
+          "quantity": "19997",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage805342.jpg",
+          "name": "baskin robins",
+          "stockManagement": "true",
+          "unitRate": "65.0",
+          "description": "I scream for ice cream!",
+          "id": "503"
+        }
+      ]
+    },
+    {
+      "Dry Fruits": [
+        {
+          "quantity": "81",
+          "name": "50gms of Almond",
+          "stockManagement": "true",
+          "unitRate": "12.0",
+          "description": "",
+          "id": "626"
+        }
+      ]
+    },
+    {
+      "Exotic Vegetable": [
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio758102.mp3",
+          "quantity": "114",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage281924.jpg",
+          "name": "250 grams of Baby corn",
+          "stockManagement": "true",
+          "unitRate": "100.0",
+          "description": "I'm corny!",
+          "id": "208"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio502118.mp3",
+          "quantity": "243",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage582664.jpg",
+          "name": "250 grams of Zucchini",
+          "stockManagement": "true",
+          "unitRate": "100.0",
+          "description": "",
+          "id": "290"
+        },
+        {
+          "audioUrl": "http://ruralict.cse.iitb.ac.in/Downloads/audio/myAudio591969.mp3",
+          "quantity": "188",
+          "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/myImage447782.jpg",
+          "name": "3 peices of broccoli",
+          "stockManagement": "true",
+          "unitRate": "60.0",
+          "description": "",
+          "id": "360"
+        }
+      ]
+    }
+  ]
+}

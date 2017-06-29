@@ -1,0 +1,182 @@
+@font-face {
+    font-family: 'mycustomfont';
+    src:    url('fonts/mycustomfont.eot?f0oagf');
+    src:    url('fonts/mycustomfont.eot?f0oagf#iefix') format('embedded-opentype'),
+        url('fonts/mycustomfont.ttf?f0oagf') format('truetype'),
+        url('fonts/mycustomfont.woff?f0oagf') format('woff'),
+        url('fonts/mycustomfont.svg?f0oagf#mycustomfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'mycustomfont' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-organisation:before {
+    content: "";
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    background: url(cart.svg);
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-refer:before {
+    content: "";
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    background: url(cart.svg);
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-contactus:before {
+    content: "";
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    /*background: url(contact.svg);*/
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-faq:before {
+    content: "";
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    /*background: url(cart.svg);*/
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-feedback:before {
+    content: "";
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    /*background: url(cart.svg);*/
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-help:before {
+    content: "";
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    background: url(faq_grey.svg);
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-info:before {
+    content: "";
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    background: url(cart.svg);
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-orders:before {
+    content: "";
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    background: url(orders_grey.svg);
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-products:before {
+    content: "";
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    background: url(products_grey.svg);
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-profile:before {
+    content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    background: url(profile_grey.svg);
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.icon-termsandconditions:before {
+   /* content: "\f0f6";
+    font-family: 'FontAwesome';*/
+        content: "";
+    height: 3vh;
+    width: 5vw;
+    display: block;
+    /*background: url(profile_grey.svg);*/
+    position: relative;
+    top: 24px;
+    left: -5vw;
+    padding: -1px 2px;
+    background-repeat: no-repeat;
+}
+.km-nova .km-list li>.km-listview-link{
+    padding-left: 2em;
+}
+.fa-filter:before{
+    content: "";
+    display: block;
+    width: 1.5em;
+    height: 3em;
+    top: 0.9em;
+    background: url(products_grey.svg);
+    position: relative;
+    background-repeat: no-repeat;
+}

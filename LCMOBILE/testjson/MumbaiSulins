@@ -1,0 +1,288 @@
+{
+  "products": [
+    {
+      "Fruits": [
+        {
+          "quantity": "3140",
+          "name": "Apples 500g (NG)",
+          "stockManagement": "false",
+          "unitRate": "110.0",
+          "description": "",
+          "id": "362"
+        },
+        {
+          "quantity": "3367",
+          "name": "Banana Elaichi 1doz (NG)",
+          "stockManagement": "false",
+          "unitRate": "80.0",
+          "description": "",
+          "id": "371"
+        },
+        {
+          "quantity": "1009",
+          "name": "Black Grapes 500g (NG)",
+          "stockManagement": "false",
+          "unitRate": "100.0",
+          "description": "",
+          "id": "364"
+        },
+        {
+          "quantity": "1022",
+          "name": "Cashew Nuts 250g (NG)",
+          "stockManagement": "false",
+          "unitRate": "300.0",
+          "description": "",
+          "id": "367"
+        },
+        {
+          "quantity": "2010",
+          "name": "Chickoo 500g (NG)",
+          "stockManagement": "false",
+          "unitRate": "40.0",
+          "description": "",
+          "id": "351"
+        },
+        {
+          "quantity": "2014",
+          "name": "Figs 1box (NG)",
+          "stockManagement": "false",
+          "unitRate": "150.0",
+          "description": "",
+          "id": "365"
+        },
+        {
+          "quantity": "2013",
+          "name": "Guava 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "120.0",
+          "description": "",
+          "id": "369"
+        },
+        {
+          "quantity": "2007",
+          "name": "Mosambi 1dz (NG)",
+          "stockManagement": "false",
+          "unitRate": "200.0",
+          "description": "",
+          "id": "366"
+        },
+        {
+          "quantity": "2011",
+          "name": "Pear 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "180.0",
+          "description": "",
+          "id": "370"
+        },
+        {
+          "quantity": "2003",
+          "name": "Pomegranate 1kg",
+          "stockManagement": "false",
+          "unitRate": "200.0",
+          "description": "",
+          "id": "394"
+        },
+        {
+          "quantity": "2017",
+          "name": "Sitaphal 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "180.0",
+          "description": "",
+          "id": "372"
+        },
+        {
+          "quantity": "2008",
+          "name": "Strawberries 1box (NG)",
+          "stockManagement": "false",
+          "unitRate": "150.0",
+          "description": "",
+          "id": "368"
+        },
+        {
+          "quantity": "2060",
+          "name": "Watermelon 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "45.0",
+          "description": "",
+          "id": "363"
+        }
+      ]
+    },
+    {
+      "Vegetables": [
+        {
+          "quantity": "4978",
+          "name": "Capsicum 250g (NG)",
+          "stockManagement": "false",
+          "unitRate": "20.0",
+          "description": "",
+          "id": "375"
+        },
+        {
+          "quantity": "7616",
+          "name": "Garlic 100g (NG)",
+          "stockManagement": "false",
+          "unitRate": "20.0",
+          "description": "",
+          "id": "376"
+        }
+      ]
+    },
+    {
+      "Other": [
+        {
+          "quantity": "2017",
+          "name": "Ambemohar Rice 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "100.0",
+          "description": "",
+          "id": "379"
+        },
+        {
+          "quantity": "3109",
+          "name": "Bajra 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "55.0",
+          "description": "",
+          "id": "382"
+        },
+        {
+          "quantity": "2004",
+          "name": "Brown Rice 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "85.0",
+          "description": "",
+          "id": "377"
+        },
+        {
+          "quantity": "2001",
+          "name": "Chilli Powder 250g",
+          "stockManagement": "false",
+          "unitRate": "90.0",
+          "description": "",
+          "id": "391"
+        },
+        {
+          "quantity": "2001",
+          "name": "Coconut Oil 500ml",
+          "stockManagement": "false",
+          "unitRate": "190.0",
+          "description": "",
+          "id": "388"
+        },
+        {
+          "quantity": "2001",
+          "name": "Dhania Powder 250g",
+          "stockManagement": "false",
+          "unitRate": "90.0",
+          "description": "",
+          "id": "392"
+        },
+        {
+          "quantity": "1999",
+          "name": "Groundnut Oil 1L",
+          "stockManagement": "false",
+          "unitRate": "330.0",
+          "description": "",
+          "id": "387"
+        },
+        {
+          "quantity": "1999",
+          "name": "Haldi Powder 250g",
+          "stockManagement": "false",
+          "unitRate": "90.0",
+          "description": "",
+          "id": "390"
+        },
+        {
+          "quantity": "2001",
+          "name": "Jeera 100g",
+          "stockManagement": "false",
+          "unitRate": "70.0",
+          "description": "",
+          "id": "385"
+        },
+        {
+          "quantity": "1999",
+          "name": "Kadipatta 1bunch (NG)",
+          "stockManagement": "false",
+          "unitRate": "0.0",
+          "description": "",
+          "id": "374"
+        },
+        {
+          "quantity": "2005",
+          "name": "Methi Seeds 100g",
+          "stockManagement": "false",
+          "unitRate": "35.0",
+          "description": "",
+          "id": "386"
+        },
+        {
+          "quantity": "2002",
+          "name": "Mustard 100g",
+          "stockManagement": "false",
+          "unitRate": "35.0",
+          "description": "",
+          "id": "393"
+        },
+        {
+          "quantity": "2001",
+          "name": "Organic Jowar 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "55.0",
+          "description": "",
+          "id": "381"
+        },
+        {
+          "quantity": "2002",
+          "name": "Organic Red Rice 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "100.0",
+          "description": "",
+          "id": "378"
+        },
+        {
+          "quantity": "1999",
+          "name": "Raw Honey 1kg",
+          "stockManagement": "false",
+          "unitRate": "460.0",
+          "description": "",
+          "id": "389"
+        },
+        {
+          "quantity": "1999",
+          "name": "Red Rice Poha 1kg (NG)",
+          "stockManagement": "false",
+          "unitRate": "120.0",
+          "description": "",
+          "id": "373"
+        },
+        {
+          "quantity": "1999",
+          "name": "Split Moong 1kg",
+          "stockManagement": "false",
+          "unitRate": "180.0",
+          "description": "",
+          "id": "384"
+        },
+        {
+          "quantity": "1999",
+          "name": "Toor Dal 1kg",
+          "stockManagement": "false",
+          "unitRate": "200.0",
+          "description": "",
+          "id": "380"
+        },
+        {
+          "quantity": "1999",
+          "name": "Whole Moong 1kg",
+          "stockManagement": "false",
+          "unitRate": "180.0",
+          "description": "",
+          "id": "383"
+        }
+      ]
+    }
+  ]
+}

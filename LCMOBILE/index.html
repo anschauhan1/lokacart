@@ -1,0 +1,2284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> -->
+    <link rel="stylesheet" href="styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="styles/kendo.mobile.all.min.css" />
+    <link rel="stylesheet" href="styles/font-awesome.min.css"/>
+    <link rel="stylesheet" href="mycustomfont/style.css"/>
+    <link rel="stylesheet" href="index.css"/>
+    <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en' rel='stylesheet' type='text/css'>
+    <!-- <link href="snackbarjs/dist/snackbar.css" rel="stylesheet"/> -->
+    <!-- <link href="snackbarjs/themes-css/material.css" rel="stylesheet"/> -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="snackbarjs/dist/snackbar.min.js"></script>
+</head>
+<body>
+
+<div data-role="view" id="startView" data-layout="drawer-layout" data-title="Loading" data-show="startMockups">
+</div>
+
+<!-- START MAIN VIEW-->
+<div data-role="view" id="drawer-home" data-title="Products" data-init="mainListInit">
+    <header data-role="header">
+        <div data-role="navbar" id="mainViewNavbar">
+            <a onclick='leftnav_imagedata()' data-role="button" data-rel="drawer" href="#nav-drawer" data-icon="drawer-icon" data-align="left"></a>
+            <span data-role="view-title"></span>
+            <a data-role="button" data-icon="cart" id="cart-badge" data-badge="0" data-align="right" href="#cart-page"></a>
+            <a data-role="button" data-align="right" onclick="showRightDrawer()"><i class="fa fa-filter"></i></a>
+        </div>
+    </header>
+    <ul id="mainList" data-role="listview"></ul>
+
+    <div class="k-content">
+        <div id="loading">
+        </div>
+    </div>
+
+<!--     <div id="modal" data-role="modalview" style="width: 75%; height: 75%;">
+        <div data-role="header">
+            <div data-role="navbar">
+                <a data-align="right" data-click="closeModalView" data-role="button">Close</a>
+            </div>
+        </div>
+    </div> -->
+</div>
+<!--END MAIN VIEW-->
+
+<!--START PLACED ORDERS VIEW-->
+<div data-role="view" id="drawer-orders" data-layout="drawer-layout" data-title="Placed Orders">
+
+    <p id="adhoctable"></p>
+
+    <!-- CANCEL ORDER MODAL VIEW-->
+    <div id="cancelOrderView" data-role="modalview" style="width:90%;height:90%">
+        <div data-role="header">
+            <div data-role="navbar" class="navbar_green">
+                <span>Cancellation feedback form</span>
+            </div>
+        </div>
+
+        <ul data-role="listview" data-style="inset" data-type="group">
+            <li>
+                <ul>
+                    <li><label onclick="hideCancelTextView();" class="cancelRadioClass"><input name="cancelradio" value=1 type="radio" />Not interested any more</label></li>
+                    <li><label onclick="hideCancelTextView();" class="cancelRadioClass"><input name="cancelradio" value=2 type="radio" />Order delivery delayed</label></li>
+                    <li><label onclick="hideCancelTextView();" class="cancelRadioClass"><input name="cancelradio" value=3 type="radio" />Ordered duplicate items by mistake</label></li>
+                    <li><label onclick="hideCancelTextView();" class="cancelRadioClass"><input name="cancelradio" value=4 type="radio" />Purchased wrong item</label></li>
+                    <li><label onclick="showCancelTextView();" class="cancelRadioClass"><input name="cancelradio" value=5 type="radio" />Other reasons</label></li><br/><br/>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="form-group" placeholder="Comments" id="cancelCommentDiv" style="display:none;margin-top:0 !important;">
+            <textarea id=cancelCommentTextView required="required"></textarea>
+            <label for="textarea" class="control-label">Comments</label>
+            <!-- <i class="bar"></i> -->
+        </div>
+
+        <div data-role="footer">
+            <div data-role="navbar" class="navbar_green">
+                <a style="float:right;" data-click="cancelOkModal" type="button" data-role="button">Ok</a>
+                <a style="float:right;" data-click="closeCancellationModal" type="button" data-role="button">Close</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- CANCEL ORDER MODAL VIEW-->
+
+</div>
+
+<!--END PLACED ORDERS VIEW-->
+
+<!-- START PROCCESSED ORDERS VIEW -->
+<div data-role="view" id="drawer-process" data-layout="drawer-layout" data-title="Processed Orders">
+	<p id="processtable"></p>
+
+</div>
+
+<!-- END PROCCESSED ORDERS VIEW-->
+
+
+<!-- START Delivered ORDERS VIEW -->
+<div data-role="view" id="drawer-delivered" data-layout="drawer-layout" data-title="Delivered Orders">
+    <p id="deliveredtable"></p>
+
+</div>
+
+<!-- END Delivered ORDERS VIEW-->
+
+
+<!--START PROFILE VIEW-->
+<div data-role="view" id="drawer-profile" data-layout="drawer-layout" data-title="Profile">
+	<!-- <img id ="profileview_image" src="" width="15%" style="display: block;margin: 0 auto;padding-top:2em;padding-bottom:1em;" data-responsive class="resimgs"> -->
+	<div style="border:0.5px solid #d3d3d3;margin:2em;" align="center">
+		<h2 id = "profileview_name" style="color:#66BB6A;font-size:xx-large;">Anshul Chauhan</h2>
+		<h2 id = "profileview_email">anshulchauhan1997@gmail.com</h2>
+		<h2 id = "profileview_phoneno">8454890893</h2>
+		<h2 id = "profileview_address">247-5</h2>
+		<h2 id = "profileview_pincode">400076</h2>
+	</div>
+</div>
+
+
+<!--END PROFILE VIEW-->
+
+
+<!-- START ORGANISATIONS -->
+<div data-role="view" id="drawer-organisations" data-layout="drawer-layout" data-title="Organisations" data-show="organisationRadioView">
+
+    <footer data-role="footer">
+        <div data-role="tabstrip">
+            <a onclick="setOrganisation()" >CHANGE ORGANISATION</a>
+            <a onclick="leaveOrganisation()" >LEAVE ORGANISATION</a>
+        </div>
+    </footer>
+
+    <ul data-role="listview" data-style="inset" data-type="group">
+        <li>Select any organisation
+            <form id = "org-list">
+                <ul style="list-style: none;" id="organisationRadioList">
+                </ul>
+            </form>
+        </li>
+    </ul>
+</div>
+<!-- END ORGANISATIONS -->
+
+
+<!--START REFERRAL VIEW-->
+
+<!-- <div data-role="view" id="drawer-referral" data-layout="drawer-layout" data-title="Referral" data-show="referralFormClear">
+
+    <img src="drawables/send_ref.png" style='display:block; margin:0 auto;padding-top:1em;' width="40%" data-responsive class="resimgs">
+
+    <div class="form-group" style="margin:2em;">
+        <input type="text" id="emailRefer" required="required"/>
+        <label for="input" class="control-label">Email ID</label><i class="bar"></i>
+    </div>
+
+    <div class="form-group" style="margin:2em;">
+        <input type="number" id="contactRefer" required="required"/>
+        <label for="input" class="control-label">Contact number</label><i class="bar"></i>
+    </div>
+
+    <div align="center" style="font-size:large;padding:20px;" >
+        <input id="dropdownReferral" />
+        <input style="margin-top:2em !important;" type="button" value="REFER" class="atcbutton" onclick="referPeople();" />
+    </div>
+
+</div> -->
+
+<!--END REFERRAL VIEW-->
+
+
+<!--START ABOUT US -->
+<div data-role="view" id="drawer-about" data-layout="drawer-layout" data-title="About Us">
+
+    <div style="float:left; padding-left:40px; padding-top:40px; padding-bottom:30px;">
+        <img src="drawables/about_us_logo.png" width="15%" data-responsive class="resimgs">
+        <img src="drawables/lokacart_about_us_text.png" width="70%" data-responsive class="resimgs">
+    </div>
+    <div align="center" style="font-size:large;padding:20px;" >
+        <p><b>About Lokacart</b></h4>
+        <p>Lokacart is a mobile-first e-commerce platform developed with a focus to create a cohesive relationship between the producers and the consumers with the help of intermediary organizations.</p><br/>
+        <p><b>Designed and Developed by</b></p>
+        <p>Department of Computer Science and Engineering Indian Institute of Technology Bombay</p><br/>
+        <p><b>Copyright</b></p>
+        <p>Copyright 2012-2015 IIT Bombay</p><br/>
+        <p><b>Disclaimer</b></p>
+        <p>Indian Institute of Technology Bombay does not in any manner endorses,  warrant,  and or guarantees the authenticity,  quality,  delivery,  safety and benefits of the offers and/or Products and/or services advertised herein in any manner whatsoever.</p><br/>
+    </div>
+</div>
+<!--END ABOUT US-->
+
+
+<!-- START FEEDBACK VIEW-->
+<div data-role="view" id="drawer-feedback" data-layout="drawer-layout" data-title="Feedback" data-show="feedbackFormClear"  class="default">
+    <div align="center" style="font-size:large;padding:20px;" >
+        <p>Your feedback is valuable to us and will help us improve the product experience</p><br/>
+        <img src="drawables/feedback.png" width="20%" data-responsive class="resimgs"><br/><br/>
+            <select id="dropdownFeedback" data-role="dropdownlist">
+                <option value="1">Select Organisation</option>
+                <option value="2">Abhinav Farmers Club, Pune</option>
+                <option value="3">Demo Org</option>
+                <option value="4">Nature's Gram, Mumbai</option>
+                <option value="5">Vidyakshetra, Bangalore</option>
+                <option value="6">Mumbai Sulins, Mumbai</option>
+                <option value="7">Lokacart Team</option>
+            </select><br/><br/><br/>
+
+    </div>
+
+    <div class="form-group" style="margin:2em !important;margin-top:0 !important;">
+      <textarea required="required" id="feedbackTextArea" rows="8"></textarea>
+      <label for="textarea" class="control-label">Please enter your feedback</label>
+      <!-- <i class="bar"></i> -->
+    </div>
+
+    <input type="button" value="SUBMIT" class="atcbutton" onclick="feedbackCheck()" />
+
+</div>
+<!-- END FEEDBACK VIEW -->
+
+
+<!--START MODAL CONTACTUS-->
+
+<div data-role="modalview" id="drawer-contact" style="width: 90%; height:48vh;">
+    <div data-role="header">
+        <div data-role="navbar" class="navbar_green">
+            <span>Have an issue?</span>
+        </div>
+    </div>
+
+
+    <div align="center" style="padding:15px">
+        <a href="#drawer-faq" style="font-size:x-large; text-decoration:none">FAQ</a><br/><br/>
+        <p style="font-size:large;">or<br/><br/>get in touch with us directly</p><br/>
+        <div style="float:left;">
+            <a href='tel:+912225764974' data-rel="external"><img src="drawables/contact_us_call.svg" width="15%" data-responsive class="resimgs" style="padding-right:5px;"></a>
+            <a href='mailto:lokacart@cse.iitb.ac.in' data-rel="external"><img src="drawables/contact_us_email.svg" width="15%" data-responsive class="resimgs" style="padding-right:5px;"></a>
+            <a href='http://www.facebook.com/RuralICT.iitb/' data-rel="external"><img src="drawables/contact_us_fb.svg" width="15%" data-responsive class="resimgs" style="padding-right:5px"></a>
+            <a href='http://www.ruralict.cse.iitb.ac.in' data-rel="external"><img src="drawables/contact_us_website.svg" width="15%" data-responsive class="resimgs" style="padding-right:5px"></a>
+        </div>
+    </div>
+
+
+    <div data-role="footer">
+        <div data-role="navbar" class="navbar_green">
+            <a data-click="closeModalViewLogin" type="button" data-role="button" data-align="center">Close</a>
+        </div>
+    </div>
+</div>
+
+<!--END MODAL CONTACTS-->
+
+
+<!--START T&C-->
+<div data-role="view" id="drawer-tc" data-layout="drawer-layout" data-title="Terms and Conditions">
+    <div style="float:left; padding-left:40px; padding-top:40px; padding-bottom:30px;">
+        <img src="drawables/about_us_logo.png" width="15%" data-responsive class="resimgs">
+        <img src="drawables/lokacart_about_us_text.png" width="70%" data-responsive class="resimgs">
+    </div>
+    <div style="font-size:large;padding:15px;" >
+        <ul style="padding:1em;">
+           <p style="font-size:x-large;" align="center"><b><u>Terms and Conditions</u></b></p><br/>
+           <li>No minimum purchase amount is applicable.</li>
+           <li>Customers can make multiple smaller purchases.</li>
+           <li>Customers can contact Lokacart customer service in case of any technical issues. Email Id lokacart@cse.iitb.ac.in </li>
+           <li>Lokacart shall not be responsible for the delivery,  service,  availability or quality of the Offer and/  or products/services made available to the Customers</li>
+           <li>Lokacart shall not be liable for any loss or damage whatsoever that may be suffered,  or for any personal injury that may be suffered,  directly or indirectly</li>
+           <li>Services would be available to only select geographies in India which will be updated on the website</li>
+           <li>Customer will have to keep the account and registration details updated and correct for communications related to your purchases from the site.  By agreeing to the terms and conditions,  the shopper agrees to receive promotional communication and newsletters upon registration </li>
+           <li>All the products listed will be sold at MRP unless otherwise specified.  The prices mentioned at the time of ordering will be the prices charged on the date of the delivery.  Although prices of most of the products do not fluctuate on a daily hasis but some of the commodities and fresh food prices do change on a daily basis.  In case the prices are higher or lower on the date of delivery no additional charges will be collected or refunded as the case may be at the time of the delivery of the order</li>
+           <li>Customer can cancel the order anytime up to the cut-off time of the slot for which you have placed an order</li>
+           <li> Lokacart may at any time modify the Terms and Conditions of Use of the Website without any prior notification.  One can access the latest version of these Terms and Conditions at any given time</li>
+           <li>Customer shall be solely responsible for the accuracy and correctness of all such details information given during registration.  If the Admin has reason to doubt the correctness of any details/  information furnished by customer or in case any information furnished by customer is found incorrect,  false or misleading or otherwise not in accordance with these Terms of Use,  then the Admin shall be entitled to cancel or indefinitely suspend or block access of your membership with Lokacart and refuse to provide the access for such period</li>
+           <li>User agrees and understands that the Lokacart shall not be responsible in any manner whatsoever for:</li>
+           <li>Delivery of Product at wrong address furnished by User</li>
+           <li>Any loss and/or damage to User due to incorrect,  incomplete and/or false information furnished by User</li>
+           <li>Customer understands and confirms that the Lokacart shall not be held responsible for any delay in shipment of Product due to circumstances beyond the control of the Lokacart.</li>
+           <li>The Lokacart,  at its discretion,  from time to time may implement policies to compensate customers in case of inordinate shipment delays. </li>
+           <li>Anyone at the delivery address who receives the delivery of the product is conclusively presumed to be authorized to receive and pay for the order</li>
+           <li>All disputes in connection shall be subjected to the exclusive juriduction of courts of Mumbai</li>
+       </ul>
+    </div>
+
+</div>
+<!--END T&C-->
+
+
+<!-- START FAQ VIEW-->
+<div data-role="view" id="drawer-faq" data-layout="drawer-layout" data-title="FAQ's">
+
+    <div>
+           <div class="faq_content">
+               <p class="faq_heading">Registration</p>
+               <p class="faq_ques">Q.1 How do I register ?</p>
+               <p class="faq_answer">Registration process is a fairly simple process. Download the app from playstore and fill the form on Connect With Us page.
+Once we receive all your details, we will contact the organisation nearest to your location. You will now receive an SMS confirming your membership with the organisation. This SMS will contain the Google Play Store link of Lokacart along with your login credentials.Use the link to download the app / If you already have the app downloaded, you need to click on link and you will be redirected to step 6 directly. Log into the app and fill up profile details. Registration is now complete and you are authorized to use all the features of the app.
+Users can also register via the referral system, details of which are discussed in the referral section.
+</p>
+
+               <p class="faq_ques">Q.2 Are there any charges for registration?
+</p>
+               <p class="faq_answer">No, Registration is absolutely free.</p>
+
+
+
+               <p class="faq_heading">Shopping and Payment</p>
+
+               <p class="faq_ques">Q.1 How can I purchase goods from the Lokacart app?</p>
+               <p class="faq_answer">Browse the product categories using right tab to find the product of your choice.Go to the “Add to cart” icon.
+Go to the cart icon on the top right corner of the screen to go to the Cart Screen. The Cart Screen displays the quantities of each product chosen for purchase.
+Go to “Checkout” to place the order. You will now receive the Order ID for your order. ( This is confirmation that your order is placed successfully )
+</p>
+
+               <p class="faq_ques">Q.2 How do I pay for my order ?
+</p>
+               <p class="faq_answer">Payment is to be made in cash only on delivery of the order.
+</p>
+
+               <p class="faq_heading">Order</p>
+               <p class="faq_ques">Q.1 Can I modify/cancel an order once I have placed it ?
+</p>
+               <p class="faq_answer">You can cancel orders placed before they get processed by the admin of the organisation. <br>You cannot modify orders placed, you can cancel the order and place the correct order again</p>
+               <p class="faq_ques">Q.2 How do I know when my order has been processed ?
+</p>
+               <p class="faq_answer">When an order is processed by the organisation, an email containing the bill of the purchased items is sent to the user.
+The user is also sent a push notification of the same.
+Also the order history can be checked in processed order tab in the app.
+</p>
+               <p class="faq_ques">Q.3 How can I check my previous order history ?
+</p>
+               <p class="faq_answer">Swipe left on the dashboard to obtain the navigation drawer that contains “Orders”.
+Order history of all orders formerly placed can be viewed in the “Processed Orders” screen.
+“Processed Orders” is listed under “Orders”.
+</p>
+
+               <p class="faq_heading">Account settings
+</p>
+               <p class="faq_ques">Q.1 How can I quit Lokacart ?
+</p>
+               <p class="faq_answer">Users have to directly uninstall Lokacart to quit.
+</p>
+
+                <p class="faq_ques">Q.2 How can I change my profile details ?
+</p>
+               <p class="faq_answer">Swipe left to access the left navigation drawer. Go to “Profile”.
+Go to the edit icon on the top right corner of the screen.
+This enables you to edit your first and last names, address, pincode and phone number.
+</p>
+
+               <p class="faq_ques">Q.3 Can I change my email id?
+</p>
+               <p class="faq_answer">Yes you can change your email id any time. You have to verify your new email id by clicking on the link you get on your new email id.</p>
+
+
+               <p class="faq_heading">Referral System
+</p>
+               <p class="faq_ques">Q.1 What is the referral system on Lokacart?
+</p>
+               <p class="faq_answer">The referral system allows registered users to refer other registered and new users to various organisations on Lokacart that the registered users are members of.If the referred person is not a Lokacart user, he/she will receive his/her Login credentials through an SMS on his phone number.If the referred person is already a Lokacart user , he/she will receive an SMS stating that he/she has been added to a new organisation by the referee.</p>
+
+                <p class="faq_ques">Q.2 How can I refer another user for an organisation?
+</p>
+               <p class="faq_answer">Swipe left on the dashboard to access the left navigation drawer.Go to “Referral”. Use the contact picker to select a contact number from your address book or you may enter the number directly. Select the organisation you are referring the user to. Click on Refer.</p>
+
+                <p class="faq_ques">Q.3 How can I register myself to multiple organisations ?
+</p>
+               <p class="faq_answer">If you know a user who is a member of the organisation you wish to join, you can ask him/her to refer you to the organisation.
+If you have seen the organisation’s referral code in a pamphlet or on any social media platform then click on “I Have a Referral Code”. Enter the code and click Submit. You can then view the organisation in your organisation list and proceed to purchase products from them.
+</p>
+
+                <p class="faq_ques">Q.4 I haven't used Lokacart before. I received a referral link from one of my contacts.  What do I do next?
+</p>
+               <p class="faq_answer">Click on the link you received to download Lokacart app. You will then be added to the organisation your contact referred you to. Fill up your profile details to complete the registration process. Registration is now complete and you can proceed to use all features of the app.</p>
+
+                <p class="faq_ques">Q.5 Is referring a friend a paid feature ?
+</p>
+               <p class="faq_answer">Referring contacts is free of cost. We urge you as Lokacart users to refer your contacts to organisations of your choice and help them avail Lokacart services.</p>
+
+                <p class="faq_ques">Q.6 Can I use the same referral link for multiple accounts ?
+</p>
+               <p class="faq_answer">Referrals are only meant for you to use on the account that has been referred by the organisation. Using one referral code on multiple accounts will result in the removal of original and/or new account from the organisation(s).</p>
+
+                <p class="faq_ques">Q.7 What do I do if I lose my referral code?
+</p>
+               <p class="faq_answer">Kindly contact our team with your issue and we will get in touch with you in order to help you log into your account again. Do not attempt to use another account's referral code as that would be considered unauthorized access and result in the removal of the account.</p>
+
+               <p class="faq_heading">Feedback</p>
+               <p class="faq_ques">Q.1 How can I send feedback to an organisation or to the Lokacart team?
+</p>
+               <p class="faq_answer">Click on left navigation drawer, click on Feedback, select the organisation you wish to send feedback to or to the Lokacart Team. Type your feedback and click Submit.</p>
+
+               <p class="faq_ques">Q.2 Who do I get in touch with the Lokacart Team?
+</p>
+               <p class="faq_answer">Please feel free to contact us. Use the links on the “Contact Us” section under “Help” or contact us on <a href="mailto:lokacart@cse.iitb.ac.in">lokacart@cse.iitb.ac.in</a>.
+For issues regarding services related to specific organisations or products on Lokacart, please refer to their respective homepages.
+A satisfied customer is our hope and pride.
+</p>
+
+
+               <p class="faq_heading">Others</p>
+               <p class="faq_ques">Q.1 Product images are taking a lot of time to load. What can I do ?
+</p>
+               <p class="faq_answer">Check network connectivity, try reconnecting. If you still have any problem, contact us on lokacart@cse.iitb.ac.in</p>
+
+               <p class="faq_ques">Q.2 Which android devices are supported by Lokacart ?
+</p>
+               <p class="faq_answer">Android devices 4.0 and higher.
+</p>
+           </div>
+    </div>
+
+</div>
+<!-- END FAQ VIEW-->
+
+<!-- START CHECKOUT VIEW-->
+<div data-role="view" id="checkout-page" data-title="Order Placed">
+
+    <header data-role="header">
+        <div data-role="navbar" class="navbar_green">
+            <a data-role="button" onclick="jumpRefreshHome();" data-icon="back" data-align="left"></a>
+            <span data-role="view-title"></span>
+
+        </div>
+    </header>
+
+    <img src="drawables/order_placed.png" style='display:block; margin:0 auto;padding-top: 10em; padding-bottom: 1em;' width="45%" data-responsive class="resimgs"/>
+
+    <div align=center>
+        <h2 style="color:#222;">Order Placed!</h2>
+        <h1 style="color:#666; padding:0.25em;">Your Order ID: <span id='finalOrderId'>2014</span></h1>
+        <input type="button" style="margin:0.25em !important;" value="DONE" class="atcbutton" onclick="jumpRefreshHome();" />
+    </div>
+</div>
+
+<!-- END CHECKOUT VIEW-->
+
+
+<!-- START CART VIEW -->
+
+<!-- <div data-role="view" id="cart-page" data-title="Cart" data-init="cartListInit">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="button" onclick="jumpRefreshHome();" data-icon="back" data-align="left"></a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+    <footer data-role="footer" id="checkoutFooter">
+        <b><h1 align="center" style="color:white"><i class="fa fa-inr"></i>&nbsp;<span id="totalCart">0</span></h1></b>
+        <div data-role="tabstrip">
+            <a onclick="checkoutPreprocess();" data-role="button">Checkout</a>
+        </div>
+    </footer>
+
+    <ul id="cartlist"></ul>
+</div> -->
+
+
+<div data-role="view" id="cart-page" data-title="Cart" data-init="cartListInit">
+    <header data-role="header">
+        <div data-role="navbar" class="navbar_green">
+            <a data-role="button" onclick="jumpRefreshHome();" data-icon="back" data-align="left"></a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+    <footer data-role="footer" id="checkoutFooter">
+        <b><h1 align="center" style="color: #4CAF50; font-size: 1.3em;padding: 0.3em 1em 1.3em;">
+            <span style="float: left;">Total: </span>
+            <div style="float: right;"><i class="fa fa-inr"></i>&nbsp;<span id="totalCart">0</span></div>
+        </h1></b>
+        <div data-role="tabstrip" class="tabstrip">
+            <a onclick="checkoutPreprocess();" data-role="button">Checkout</a>
+        </div>
+    </footer>
+
+    <ul id="cartlist"></ul>
+</div>
+
+
+
+<!-- END CART VIEW-->
+
+<!--START LEFT DRAWER-->
+
+<!-- <div data-role="drawer" id="nav-drawer" style="width:17em" data-title="Lokacart" data-views="['drawer-home','drawer-orders','drawer-organisations','drawer-process','drawer-delivered','drawer-profile','drawer-referral','drawer-about','drawer-feedback','drawer-contact','drawer-tc','drawer-faq']"> -->
+<div data-role="drawer" id="nav-drawer" style="width:17em" data-title="Lokacart" data-views="['drawer-home','drawer-orders','drawer-organisations','drawer-process','drawer-delivered','drawer-profile','drawer-about','drawer-feedback','drawer-contact','drawer-tc','drawer-faq']">
+    <!-- <img src="cart.svg" alt=""> -->
+    <div id = "leftnav_drawer_img"><img src="abc.jpg"></div>
+    <div id = "leftnav_name"></div>
+    <div id = "leftnav_phone"></div>
+    <div id="leftnav_drawer_div"></div>
+    <ul data-role="listview">
+        <li><a href="#drawer-home"><span class="icon-products"></span>&emsp;Products</a></li>
+        <div id="orderscollapse" data-role="collapsible">
+            <h3 style="padding-left:1em !important;">Orders</h3>
+            <ul data-role="listview">
+                <li class="paddingHack"><a onclick="placedOrdersInit(); jumpToPlaced();"><i class="fa fa-check"></i>&emsp;Placed Orders</a></li>
+                <li class="paddingHack"><a onclick="processOrdersInit(); jumpToProcess();"><i class="fa fa-play"></i>&emsp;Processed Orders</a></li>
+                <li class="paddingHack"><a onclick="deliveredOrdersInit(); jumpToDelivered();"><i class="fa fa-gift"></i>&emsp;Delivered Orders</a></li>
+            </ul>
+        </div>
+        <li><a onclick="profileInit(); jumpToProfile();" ><span class="icon-profile"></span>&emsp;Profile</a></li>
+        <li><a onclick="orgInit(); jumpToOrg();"><span class="icon-organisation"></span>&emsp;Organisations</a></li>
+        <!-- <li><a href="#drawer-referral"><span class="icon-refer"></span>&emsp;Referrals</a></li> -->
+            <li><a href="#drawer-about"><span class="icon-info"></span>&emsp;About us</a></li>
+        <div id="helpcollapse" data-role="collapsible">
+            <h3 style="padding-left:1em !important;">Help</h3>
+            <ul data-role="listview">
+                <li class="paddingHack"><a href="#drawer-feedback"><span class="icon-feedback"></span>&emsp;Feedback</a></li>
+                <li class="paddingHack"><a onclick="contactUsModal();"><span class="icon-contactus"></span>&emsp;Contact us</a></li>
+                <li class="paddingHack"><a href="#drawer-tc"><span class="icon-termsandconditions"></span>&emsp;T&C's</a></li>
+                <li class="paddingHack"><a href="#drawer-faq"><span class="icon-faq"></span>&emsp;FAQ's</a></li>
+            </ul>
+        </div>
+    </ul>
+
+</div>
+<!--END LEFT DRAWER-->
+
+
+
+<!-- START RIGHT DRAWER -->
+<div data-role="drawer" id="right-drawer" data-position="right" data-views="['drawer-home']" data-show="rightDrawerInit">
+
+    <ul id="rightDrawerList"></ul>
+</div>
+
+<!--END RIGHT DRAWER -->
+
+
+<!--START LAYOUT-->
+<div data-role="layout" data-id="drawer-layout">
+
+    <header data-role="header">
+        <div data-role="navbar" class="navbar_green">
+            <a data-role="button" data-rel="drawer" href="#nav-drawer" data-icon="drawer-icon" data-align="left"></a>
+            <span data-role="view-title" ></span>
+        </div>
+    </header>
+
+</div>
+<!--END LAYOUT-->
+
+
+<!--=======TEMPLATES========-->
+
+<!--START CART TEMPLATE-->
+
+<!-- <script type="text/x-kendo-tmpl" id="cartList-template">
+    <img src="#=imageUrl#" alt="#=name# image" class="km-thumbnail" onError="this.onerror=null;this.src='drawables/placeholder_products.svg';"/>
+    <h4>
+        <span style="font-size:large">#:name#</span>
+        <span style="float:right; font-size:small;">
+            <i class="fa fa-inr"></i>#:kendo.toString(getRowTotal(unitRate,quantity),"n")#
+        </span>
+    </h4>
+    <span class="inr_symbol">
+        <i class="fa fa-inr"></i>#:convertUnitRate(unitRate)#
+    </span>
+    &emsp;
+    <div class="cartspan_inr">
+        <span class="greenround_btn">
+            <button type="button" onclick='minusFunc("#=id#")'>
+                <i class="fa fa-minus"></i>
+            </button>
+            <span id='cartquantity#=id#'>#:kendo.toString(quantity, "n0")#</span>
+            <button  type="button" onclick='plusFunc("#=id#")'>
+                <i class="fa fa-plus"></i>
+            </button>
+        </span>
+        <span class="totalamount_span">
+    	    <button type="button" onclick='removeItem("#=id#")' ><i class="fa fa-trash fa-2x"></i></button>
+    	</span>
+    </div>
+</script> -->
+
+
+<script type="text/x-kendo-tmpl" id="cartList-template">
+    <img src="#=imageUrl#" alt="#=name# image" class="km-thumbnail cartpro_image" onError="this.onerror=null;this.src='drawables/placeholder_products.svg';"/>
+    <h4><span>#:name#</span>
+        <span style="float:right">
+            <button type="button" style="background:white; width:2em; height:2em; float:right; border:0px;" onclick='removeItem("#=id#")' >
+            <!-- <i class="fa fa-trash fa-2x"></i> -->
+            <img src="delete.svg" alt="">
+            </button>
+        </span>
+    </h4>
+    <span class="inr_symbol"><i class="fa fa-inr"></i>#:convertUnitRate(unitRate)#</span>
+    &emsp;
+    <div class="cartspan_inr">
+    <span class="greenround_btn">
+        <button type="button" onclick='minusFunc("#=id#")'>
+            <i class="fa fa-minus"></i>
+        </button>
+        <span id='cartquantity#=id#'>#:kendo.toString(quantity, "n0")#</span>
+        <button type="button" onclick='plusFunc("#=id#")'>
+            <i class="fa fa-plus"></i>
+        </button>
+    </span>
+    <span  class="totalamount_span"><i class="fa fa-inr"></i>#:kendo.toString(getRowTotal(unitRate,quantity),"n")#</span>
+    </div>
+    </script>
+
+
+<!--END CART TEMPLATE-->
+
+<!-- START MODAL TEMPLATE -->
+<script type="text/x-kendo-template" id="modal-template">
+    <img src="#: imageUrl#" alt="#: name# image" width="100%" data-responsive class="resimgs" onError="this.onerror=null;this.src='drawables/placeholder_products.svg';"/>
+    <span align="center">
+	    <h1><b>#:name#</b></h1>
+	    <h1><i class="fa fa-inr"></i>#:convertUnitRate(unitRate)#</h1><br>
+	    <h3>#:description#</h3>
+	    <audio controls style="display:block;margin:0 auto;">
+	        <source src="#: audioUrl#" type="audio/wav">
+	    App doesn't support audio
+	    </audio><br><br><br>
+	    <input type="button" value="Add to cart" class="atcbutton" onclick="atc('#: id#')" />
+	</span>
+
+</script>
+<!-- END MODAL TEMPLATE -->
+
+
+<!--START MAIN TEMPLATE-->
+<script type="text/x-kendo-tmpl" id="mainList-template">
+    <div class="main_product">
+    <img src="#=imageUrl#" alt="#=name# image" class="mainlistImage" onError="this.onerror=null;this.src='drawables/placeholder_products.svg';"/>
+    <!-- <span style="margin-left: 0.3em; float:right;font-weight:bold;" onclick="clickRow('#=id#');" class="fa fa-angle-right"></span> -->
+    <h3>#:name# &emsp;</h3>
+        <div class="inrsymbol_div">
+                <span class="inr_symbol"><i class="fa fa-inr"></i>&nbsp;#:convertUnitRate(unitRate)#</span>
+
+            	<span class="greenround_btn" style="float:right;">
+            	    <button type="button" class='minus_button'      onclick='minusMainFunc("#=id#")'>
+            	    	<i class="fa fa-minus"></i>
+            	    </button>
+            	    <span id='mainquantity#=id#' >#:kendo.toString(getCartQuantity(id), "n0")#</span>
+            	    <button type="button" onclick='plusMainFunc("#=id#")'>
+            	    	<i class="fa fa-plus"></i>
+            	    </button>
+            	</span>
+        </div>
+    </div>
+
+</script>
+<script>
+
+</script>
+<!--END MAIN TEMPLATE-->
+
+<script type="text/x-kendo-tmpl" id="rightDrawer-template">
+    <a onclick="applyFilter('#=category#')">#:category#</a>
+</script>
+
+<script type="text/x-kendo-tmpl" id="radio-template">
+    <label><input name="radio" value="#=abbr#" type="radio"/>#:organization#</label>
+</script>
+
+<script>
+        var organisation_list  = JSON.parse(localStorage.getItem('organisationlist'));
+         var temp;
+            var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    //console.log(xmlhttp.responseText);
+                    myObj = JSON.parse(xmlhttp.responseText);
+                    //console.log(myObj['products']);
+                    localStorage.setItem("maindata",JSON.stringify(myObj));
+                    console.log(JSON.parse(localStorage.getItem('maindata')));
+                //    temp = printData(myObj);
+                    }
+                };
+                if(localStorage.getItem('curr_org_abbr')===null){
+                    var orgAbbr = organisation_list['organizations'][0].organizationAbbr;
+                }
+                else{
+                    var orgAbbr = localStorage.getItem('curr_org_abbr');
+                }
+               var email_id = localStorage.getItem('mail');
+               // orgAbbr = "HHB";
+                //email_id = "suvobrat.ghosh@ves.ac.in";
+               // console.log(orgAbbr);
+               // console.log(email_id);
+                var url_new = "http://ruralict.cse.iitb.ac.in/ruralict/app/getProductMap?orgabbr="+orgAbbr+"&email="+email_id;
+                //console.log(url_new);
+               // xmlhttp.open("GET", "https://api.myjson.com/bins/13m1x1", true);
+               xmlhttp.open("GET", url_new, true);
+                xmlhttp.send();
+
+
+</script>
+<script>
+    var obj = {};
+    obj['email'] = localStorage.getItem('mail');
+
+    obj['orgabbr'] = localStorage.getItem('curr_org_abbr');
+ $.ajax({
+        url: 'http://ruralict.cse.iitb.ac.in/ruralict/app/profileView',
+        type: 'POST',
+        data: JSON.stringify(obj),
+        crossDomain: true,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+
+
+            localStorage.setItem('profile_details',JSON.stringify(msg['Profile']));
+            console.log(obj['email']);
+            console.log(obj['orgabbr']);
+            console.log(msg['Profile']);
+            //profileInit();
+        }
+    });
+
+
+
+
+
+</script>
+
+
+                                    <!-- LOCAL STORAGE ITEMS -->
+
+
+
+
+
+<!-- <script>
+        localStorage.setItem('name',"Anshul Chauhan");
+        localStorage.setItem('pincode',"400076");
+        localStorage.setItem('phonenumber',"8454890893");
+        localStorage.setItem('email',"anshulchauhan1997@gmail.com");
+        localStorage.setItem('address',"247-5");
+        localStorage.setItem('image','http://www.clker.com/cliparts/n/k/l/H/7/G/cool-guy-head-hi.png')
+var a = {
+    "organizations": [
+        {
+            "organizationAbbr": "Sulins",
+            "organizationName": "Mumbai Sulins, Mumbai"
+        },
+        {
+            "organizationAbbr": "Test2",
+            "organizationName": "Demo Org"
+        }
+    ],
+    "token": "b323f1a21ee8fb804fa1843f4c790be02bd89f9d1cf699fab7201fe80e99d549c119c207abed74da",
+    "status": "success"
+}
+    localStorage.setItem('organisationlist',JSON.stringify(a));
+</script> -->
+
+
+                                      <!-- LOCAL STORAGE ITEMS -->
+
+
+<script>
+
+var totalcart=0.0;
+var snackhackDataItem;
+var mainListDatasource;
+var cancelOrderId;
+var productTypeList=[];
+var lastHitCategoryId;
+var cartBadgeNumber=0
+var organisationList=[]; //Todo: Change it to datasource and keep updating if the user is removed from organisation
+var main_url="http://ruralict.cse.iitb.ac.in/ruralict/"
+//var main_url="http://localhost:5000/"
+
+
+var atcDatasource=new kendo.data.DataSource({
+    data:[],
+    schema:{
+        model:{id:"id"}
+    },
+    sort:{field:"name",dir:"asc"}
+});
+
+var checkoutDatasource=new kendo.data.DataSource({
+	data:[],
+	schema:{
+		model:{id:"orderId"}
+	}
+});
+
+
+//==========START ORDERS INIT. TABLE FORMATION=======
+
+function startMockups(){
+    window.location.hash="#drawer-home"
+}
+
+
+function placedOrdersInit(){
+
+
+
+
+
+
+console.log("****************");
+    var obj={};
+    obj['email']=localStorage.getItem('mail');
+    // console.log(localStorage.getItem('mail'));
+    // console.log(localStorage.getItem('curr_org_abbr'));
+    obj['orgabbr']=localStorage.getItem('curr_org_abbr');
+
+    // console.log(obj);
+    $.ajax({
+        url: 'http://ruralict.cse.iitb.ac.in/ruralict/app/profileView',
+        type: 'POST',
+        data: JSON.stringify(obj),
+        crossDomain: true,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+            console.log(msg);
+            var orders=JSON.stringify(msg);
+            console.log(orders);
+            localStorage.setItem('orders', orders);
+            console.log("$$$$$$$$$$");
+            console.log(localStorage.getItem('orders'));
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+	$("#adhoctable").empty();
+
+    checkoutDatasource.fetch(function(){
+        var placedorders=JSON.parse(localStorage.getItem('orders'));
+        console.log("************&&&&&&&");
+        console.log(placedorders);
+    //     for(var i=0; i<placedorders['Orders'].length;i++)
+    //     {
+    //     if(placedorders['Orders'][i].status=="cancelled")
+    //     {
+    //
+    //         $("#adhoctable").append("nikhil rocks");
+    //     }
+    // }
+        var flag=1;
+        for(var i=0;i<placedorders['Orders'].length;i++){
+            if(placedorders['Orders'][i].status=="saved"){
+                flag=flag*0;
+            }
+            else{
+                flag=flag*1;
+            }
+
+        }
+
+
+
+        if(flag==1){
+            $("#adhoctable").append("<h1 align='center'>No Open orders available</h1>");
+            $("#adhoctable").append("<img src='drawables/no_data.png' style='display:block; margin:0 auto;padding-top:50px;' width='70%' data-responsive class='resimgs' />")
+        }
+        else{ //Change it with the api endpoint given
+          for(var i=0;i<placedorders['Orders'].length;i++){
+
+            if(placedorders['Orders'][i].status=="saved"){
+
+                var currentOrder=placedorders['Orders'][i];
+                //Have to add the total
+                var header="<table><tr><th>Name</th><th>Quantity</th><th>Total</th></tr>";
+                var currentOrderItems=currentOrder["orderItems"];
+                var coolstr="";
+                var runningTotal=0;
+                for(var x=0;x<currentOrderItems.length;x++){
+                    var cool=currentOrderItems[x];
+
+                    amount=cool["rate"];
+
+                    runningTotal=runningTotal+((amount)*parseInt(cool["quantity"]));
+                    coolstr=coolstr+"<tr><td>"+cool["name"]+"</td><td>"+cool["quantity"]+"</td><td><i class=\"fa fa-inr\"></i> "+convertUnitRate(parseFloat(amount)*parseFloat(cool["quantity"]))+"</td></tr>";
+                }
+
+                var orderId=currentOrder['orderId']
+                var title='<h3>Order ID: '+orderId+'<span style=\'float:right;\'>'+getFormattedDate(currentOrder['placedDate'])+'</span><br/>Total:  <i class="fa fa-inr"></i> '+convertUnitRate(runningTotal)+'<span style=\'float:right;\'>'+getFormattedTime(currentOrder['placedDate'])+'</span></h3>';
+
+                var footer="</table><br/><span style='float:right;' onclick=\"cancelOrder('"+orderId+"')\"><i class='fa fa-trash fa-2x'></i></span><br/><br/>"
+                var interstr=title+header+coolstr+footer+"<hr>";
+                $("#adhoctable").append(interstr);
+            }
+            }
+        }
+    });
+}
+
+
+function cancelOrder(orderId){
+    // $('input[name="cancelradio"]').prop('checked', false);
+    // $("#cancelCommentTextView").val('');
+    // $("#cancelCommentDiv").css('display','none');
+
+    cancelOrderId=orderId;
+    // var mv=$("#cancelOrderView").data("kendoMobileModalView")
+    // mv.open();
+
+    var obj={};
+    obj['email']=localStorage.getItem('mail');
+    obj['orgabbr']=localStorage.getItem('curr_org_abbr');
+    obj['orderId']=cancelOrderId;
+    obj['comments']="NA";
+    console.log(obj);
+
+    $.ajax({
+        url: 'http://ruralict.cse.iitb.ac.in/ruralict/app/cancelOrder',
+        type: 'POST',
+        data: JSON.stringify(obj),
+        crossDomain: true,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+
+            if(msg.status=='Success')
+            {
+            alert("order cancelled successfully");
+            }
+            else
+            {
+                alert(msg.response);
+            }
+        }
+    });
+
+
+
+}
+
+function processOrdersInit(){
+
+    var dataSource=new kendo.data.DataSource({});
+	console.log("****************");
+    var obj={};
+    obj['email']=localStorage.getItem('mail');
+    // console.log(localStorage.getItem('mail'));
+    // console.log(localStorage.getItem('curr_org_abbr'));
+    obj['orgabbr']=localStorage.getItem('curr_org_abbr');
+
+    // console.log(obj);
+    $.ajax({
+        url: 'http://ruralict.cse.iitb.ac.in/ruralict/app/profileView',
+        type: 'POST',
+        data: JSON.stringify(obj),
+        crossDomain: true,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+            console.log(msg);
+            var orders=JSON.stringify(msg);
+            console.log(orders);
+            localStorage.setItem('orders', orders);
+            console.log("$$$$$$$$$$");
+            console.log(localStorage.getItem('orders'));
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+    $("#processtable").empty();
+
+
+    dataSource.fetch(function(){
+        var processedorders=JSON.parse(localStorage.getItem('orders'));
+        console.log("************&&&&&&&");
+        console.log(processedorders);
+    //     for(var i=0; i<placedorders['Orders'].length;i++)
+    //     {
+    //     if(placedorders['Orders'][i].status=="cancelled")
+    //     {
+    //
+    //         $("#adhoctable").append("nikhil rocks");
+    //     }
+    // }
+        var flag=1;
+        for(var i=0;i<processedorders['Orders'].length;i++){
+            if(processedorders['Orders'][i].status=="processed"){
+                flag=flag*0;
+            }
+            else{
+                flag=flag*1;
+            }
+
+        }
+        var mainstr="";
+        if(flag==1){
+            $("#processtable").append("<h1 align='center'>No Open orders available</h1>");
+            $("#processtable").append("<img src='drawables/no_data.png' style='display:block; margin:0 auto;padding-top:50px;' width='70%' data-responsive class='resimgs' />");
+        }
+        else{
+            for(var i=0;i<processedorders['Orders'].length;i++){
+                if(processedorders['Orders'][i].status=="processed"){
+
+
+                var currentOrder=processedorders['Orders'][i];
+                //Have to add the total
+                var header="<table><tr><th>Name</th><th>Quantity</th><th></i>Total</th></tr>";
+                var currentOrderItems=currentOrder["orderItems"];
+                var coolstr="";
+                var runningTotal=0;
+                for(var x=0;x<currentOrderItems.length;x++){
+                    var cool=currentOrderItems[x];
+
+
+                    amount=cool["rate"];
+
+                    runningTotal=runningTotal+((amount)*parseInt(cool["quantity"]));
+                    coolstr=coolstr+"<tr><td>"+cool["name"]+"</td><td>"+cool["quantity"]+"</td><td><i class=\"fa fa-inr\"></i> "+convertUnitRate(parseFloat(amount)*parseFloat(cool["quantity"]))+"</td></tr>";
+                }
+
+                var title='<h3>Order ID: '+currentOrder["orderId"]+'<span style=\'float:right;\'>'+getFormattedDate(currentOrder['placedDate'])+'</span><br/>Total:  <i class="fa fa-inr"></i> '+convertUnitRate(runningTotal)+'<span style=\'float:right;\'>'+getFormattedTime(currentOrder['placedDate'])+'</span></h3>';
+                var footer="</table>"
+                var interstr=title+header+coolstr+footer;
+                $("#processtable").append(interstr);
+
+            }
+        }
+        }
+    });
+}
+
+
+function deliveredOrdersInit(){
+
+    var dataSource=new kendo.data.DataSource({});
+    console.log("****************");
+    var obj={};
+    obj['email']=localStorage.getItem('mail');
+    // console.log(localStorage.getItem('mail'));
+    // console.log(localStorage.getItem('curr_org_abbr'));
+    obj['orgabbr']=localStorage.getItem('curr_org_abbr');
+
+    // console.log(obj);
+    $.ajax({
+        url: 'http://ruralict.cse.iitb.ac.in/ruralict/app/profileView',
+        type: 'POST',
+        data: JSON.stringify(obj),
+        crossDomain: true,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+            console.log(msg);
+            var orders=JSON.stringify(msg);
+            console.log(orders);
+            localStorage.setItem('orders', orders);
+            console.log("$$$$$$$$$$");
+            console.log(localStorage.getItem('orders'));
+        }
+    });
+
+
+    $("#deliveredtable").empty();
+
+    var dataSource=new kendo.data.DataSource({});
+
+    dataSource.fetch(function(){
+        var deliveredorders=JSON.parse(localStorage.getItem('orders'));
+        console.log("************&&&&&&&");
+        console.log(deliveredorders);
+        var mainstr="";
+        var flag=1;
+        for(var i=0;i<deliveredorders['Orders'].length;i++){
+            if(deliveredorders['Orders'][i].status=="delivered"){
+                flag=flag*0;
+            }
+            else{
+                flag=flag*1;
+            }
+
+        }
+        var mainstr="";
+        if(flag==1){
+            $("#deliveredtable").append("<h1 align='center'>No Open orders available</h1>");
+            $("#deliveredtable").append("<img src='drawables/no_data.png' style='display:block; margin:0 auto;padding-top:50px;' width='70%' data-responsive class='resimgs' />");
+        }
+        else{
+            for(var i=0;i<deliveredorders['Orders'].length;i++){
+                if(deliveredorders['Orders'][i].status=="delivered"){
+
+
+                var currentOrder=deliveredorders['Orders'][i];
+                //Have to add the total
+                var header="<table><tr><th>Name</th><th>Quantity</th><th></i>Total</th></tr>";
+                var currentOrderItems=currentOrder["orderItems"];
+                var coolstr="";
+                var runningTotal=0;
+                for(var x=0;x<currentOrderItems.length;x++){
+                    var cool=currentOrderItems[x];
+
+
+                    amount=cool["rate"];
+
+                    runningTotal=runningTotal+((amount)*parseInt(cool["quantity"]));
+                    coolstr=coolstr+"<tr><td>"+cool["name"]+"</td><td>"+cool["quantity"]+"</td><td><i class=\"fa fa-inr\"></i> "+convertUnitRate(parseFloat(amount)*parseFloat(cool["quantity"]))+"</td></tr>";
+                }
+
+                var title='<h3>Order ID: '+currentOrder["orderId"]+'<span style=\'float:right;\'>'+getFormattedDate(currentOrder['placedDate'])+'</span><br/>Total:  <i class="fa fa-inr"></i> '+convertUnitRate(runningTotal)+'<span style=\'float:right;\'>'+getFormattedTime(currentOrder['placedDate'])+'</span></h3>';
+                var footer="</table>"
+                var interstr=title+header+coolstr+footer+"<hr>";
+                $("#deliveredtable").append(interstr);
+
+            }
+        }
+        }
+    });
+}
+
+//==========END ORDERS INIT. TABLE FORMED=======
+
+
+function cartListInit(addsub,amount){
+
+    $("#cartlist").kendoMobileListView({
+        dataSource:atcDatasource,
+        template:$("#cartList-template").text()
+    });
+
+    if(atcDatasource.view().length==0){
+        $("#cartlist").append("<img src='drawables/empty_cart.png' style='display:block; margin:0 auto; padding-top:50px;' width='70%' data-responsive class='resimgs' />")
+        $("#cartlist").append("<h1 align='center'>The cart is empty</h1>")
+        $("#checkoutFooter").hide();
+    }
+    else{
+        $("#checkoutFooter").show();
+    }
+    if(addsub=='add'){
+        totalcart=totalcart+parseFloat(amount)
+    }
+    else if(addsub=="sub"){
+        totalcart=totalcart-parseFloat(amount)
+    }
+
+    $("#totalCart").html(convertUnitRate((Math.round(totalcart*100)/100)))
+
+}
+
+function rightDrawerInit(){
+
+    var obj=[]
+    for (var x=0;x<productTypeList.length;x++){
+        var localtype=productTypeList[x]
+        var local={category:localtype}
+        obj.push(local)
+    }
+
+    var dataSource=new kendo.data.DataSource({
+        data:obj
+    });
+
+    $("#rightDrawerList").kendoMobileListView({
+        dataSource:dataSource,
+        template:$("#rightDrawer-template").text()
+    });
+
+}
+function profileInit(){
+    var profile = JSON.parse(localStorage.getItem('profile_details'));
+    document.getElementById('profileview_name').innerHTML = profile['username'];
+    document.getElementById('profileview_email').innerHTML = profile['emailID'];
+    document.getElementById('profileview_phoneno').innerHTML = profile['phoneNumber'];
+    document.getElementById('profileview_address').innerHTML = profile['address'];
+    document.getElementById('profileview_pincode').innerHTML = profile['pincode'];
+
+}
+function leftnav_imagedata(){
+    var profile = JSON.parse(localStorage.getItem('profile_details'));
+    // alert("usernam is " +  profile['username']);
+    document.getElementById('leftnav_name').innerHTML = profile['username'];
+    document.getElementById('leftnav_phone').innerHTML = profile['phoneNumber'];
+    }
+ function orgInit(){
+            var organisation_list = JSON.parse(localStorage.getItem('organisationlist'));
+
+        var list = "";
+        for(var i = 0; i < organisation_list['organizations'].length; i++) {
+            list = list + "<li><input type = 'radio' name = 'rb' class = 'org_rb' id = 'rb_"+i+"'><span id = 'name_org'>"+organisation_list['organizations'][i].organizationName+"</span></li>"
+}
+
+
+
+
+        document.getElementById('organisationRadioList').innerHTML = list;
+        for(var i = 0; i < organisation_list['organizations'].length; i++){
+            if(localStorage.getItem('curr_org_name') == organisation_list['organizations'][i].organizationName){
+                document.getElementById('rb_'+i).checked = true;
+            }
+        }
+        //$('input[value="ABV1"]').prop("checked",true) //TODO: Get orgAbbr from the currently using one.
+ }
+
+
+
+function mainListInit() {
+
+    mainListDatasource=new kendo.data.DataSource({
+        transport:{
+            read:{
+                url:"testjson/test2",
+                dataType:"json"
+            }
+        },
+        schema:{
+        	model:{id:"id"},
+            parse:function (response) {
+                productTypeList=[]
+              //  var arr=response.products;
+               var myObj = JSON.parse(localStorage.getItem('maindata'));
+                var arr = myObj['products'];
+                var caravel=[];
+                console.log(arr.length);
+                console.log(arr);
+                if(arr.length>0){
+                    for(var x=0;x<arr.length;x++){
+
+                        var prodTypeObj=arr[x];
+                        console.log("yo " + prodTypeObj);
+                        for(var key in prodTypeObj){
+                            if(prodTypeObj.hasOwnProperty(key)){
+                                if(key=="_events" || key=="_handlers" || key=="uid" || key=="parent"||key=="productId"|| key=="status"){
+
+                                }else{
+                                    console.log("key is " + key);
+                                    productTypeList.push(key);
+                                }
+                            }
+                        }
+
+                        var randomObj=prodTypeObj[productTypeList[x]];
+                        console.log("r o iis "+ randomObj);
+                        for(var i=0;i<randomObj.length;i++){
+
+                            var eachprod=randomObj[i]
+
+                            var category=productTypeList[x];
+                            var audioUrl;
+                            var quantity;
+                            var imageUrl;
+                            var name;
+                            var unitRate;
+                            var description;
+                            var id;
+                            if(eachprod.hasOwnProperty("audioUrl")){
+                                audioUrl=eachprod["audioUrl"]
+                            }
+                            else{
+                                audioUrl="NA";
+                            }
+
+                            if(eachprod.hasOwnProperty("quantity")){
+                                if(eachprod["quantity"]=="0"){
+                                    quantity="Out of Stock"
+                                }
+                                else{
+                                    quantity=eachprod["quantity"]
+                                }
+                            }
+                            else{
+                                quantity="NA";
+                            }
+
+                            if(eachprod.hasOwnProperty("imageUrl")){
+                                imageUrl=eachprod["imageUrl"];
+                            }
+                            else{
+                                imageUrl="drawables/placeholder_products.svg";
+                            }
+
+                            if(eachprod.hasOwnProperty("name")){
+                                name=eachprod["name"];
+                            }
+                            else{
+                                name="NA";
+                            }
+
+                            if(eachprod.hasOwnProperty("unitRate")){
+
+                                unitRate=eachprod["unitRate"]
+                            }
+                            else{
+                                unitRate="NA";
+                            }
+
+                            if(eachprod.hasOwnProperty("description")){
+                                description=eachprod["description"]
+                            }
+                            else{
+                                description="NA";
+                            }
+
+                            if(eachprod.hasOwnProperty("id")){
+                                id=eachprod["id"]
+                            }
+                            else{
+                                id="NA";
+                            }
+
+                            var local={
+                                category:category,
+                                audioUrl:audioUrl,
+                                quantity:quantity,
+                                imageUrl:imageUrl,
+                                name:name,
+                                unitRate:unitRate,
+                                description:description,
+                                id:id
+                            }
+                            caravel.push(local)
+
+                        }
+
+                    }
+                    return caravel;
+
+                }
+
+            }
+        }
+    });
+
+    mainListDatasource.fetch(function(){
+        mainListDatasource.filter({field:'category',operator:'eq',value:productTypeList[0]});
+        lastHitCategoryId=0;
+        $("#mainViewNavbar").data("kendoMobileNavBar").title(productTypeList[0]);
+        $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber});
+    });
+
+
+    $("#mainList").kendoMobileListView({
+
+        dataSource:mainListDatasource,
+        template:$("#mainList-template").text(),
+        filterable:{
+            placeholder:"Search Products",
+            field:"name",
+            ignoreCase:true,
+            operator:"contains"
+        }
+    });
+
+
+    $('input[type=search]').on('input',function(){
+            var searchValue=$('#mainList').data('kendoMobileListView')._filter.searchInput.val();
+            if(searchValue==0 || searchValue==undefined || searchValue==null){
+
+                kendo.ui.progress($("#loading"),true);
+                app.showLoading();
+
+                setTimeout(function(){
+
+                    mainListDatasource.filter({field:'category',operator:'eq',value:productTypeList[lastHitCategoryId]});
+                    $('#mainList').data('kendoMobileListView').scroller().reset()
+                    kendo.ui.progress($("#loading"),false);
+                    app.hideLoading();
+
+                },500)
+
+                console.log('Filter reset')
+
+            }
+    });
+    //Reset datasource after clicking
+    $('.km-filter-reset').click(function(){
+
+        kendo.ui.progress($("#loading"),true);
+        app.showLoading();
+
+        setTimeout(function(){
+
+            mainListDatasource.filter({field:'category',operator:'eq',value:productTypeList[lastHitCategoryId]});
+            $('#mainList').data('kendoMobileListView').scroller().reset()
+            kendo.ui.progress($("#loading"),false);
+            app.hideLoading();
+
+        },1000)
+        console.log('Button clear reset')
+
+    });
+
+}
+
+
+</script>
+
+
+<script>
+
+//=========== START CART PAGE ADDON FUNCTIONS ======
+
+    function plusFunc(id){
+        var quantity=parseInt($("#cartquantity"+id).text());
+        quantity=quantity+1;
+        $("#cartquantity"+id).text(quantity);
+
+        var dataItem=atcDatasource.get(id);
+        var quantity1=dataItem.quantity;
+        var imageUrl=dataItem.imageUrl;
+        var unitRate=dataItem.unitRate;
+        var name=dataItem.name;
+        if(quantity1==0){
+            cartBadgeNumber+=1
+            $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber});
+        }
+
+        quantity1=quantity1+1;
+        atcDatasource.remove(dataItem);
+        atcDatasource.add({
+            imageUrl:imageUrl,id:id,unitRate:unitRate,name:name,quantity:quantity1
+        });
+
+        cartListInit('add',unitRate);
+    }
+
+    function minusFunc(id){
+
+        var quantity=parseInt($("#cartquantity"+id).text());
+        quantity=quantity-1;
+        if(quantity<=0){
+            quantity=0;
+        }
+        $("#cartquantity"+id).text(quantity);
+
+        var dataItem=atcDatasource.get(id);
+        var imageUrl=dataItem.imageUrl;
+        var quantity1=dataItem.quantity;
+        var unitRate=dataItem.unitRate;
+        var name=dataItem.name;
+
+        if(quantity1==1){
+            cartBadgeNumber-=1;
+            $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber});
+        }
+
+        quantity1=quantity1-1;
+        if(quantity1<=0){
+
+            quantity1=0
+        }
+
+
+        atcDatasource.remove(dataItem);
+        atcDatasource.add({
+            imageUrl:imageUrl,id:id,unitRate:unitRate,name:name,quantity:quantity1
+        });
+
+        if(dataItem.quantity<=0){
+            cartListInit('sub',0)
+        }
+        else{
+            cartListInit('sub',unitRate);
+        }
+
+    }
+
+    function removeItem(id){
+
+        var dataItem=atcDatasource.get(id);
+        snackhackDataItem=dataItem;
+        if(dataItem!=undefined){
+            atcDatasource.remove(dataItem)
+        }
+
+        amount=dataItem.unitRate
+        var water=dataItem.quantity*amount;
+        if(dataItem.quantity!=0){
+            cartBadgeNumber-=1
+            $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber});
+        }
+
+        cartListInit('sub',water);
+
+        // $.snackbar({content:dataItem.name+" removed from cart<span onclick=\"undoSnack("+id+")\" class=\"undoText\">Undo</span>",htmlAllowed:true});
+    }
+
+    function undoSnack(passedID){
+        var dataItem;
+        if(snackhackDataItem.id==passedID){
+            dataItem=snackhackDataItem
+        }
+        if(dataItem!=undefined){
+
+            if(dataItem.quantity!=0){
+                cartBadgeNumber+=1
+                $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber});
+            }
+
+            atcDatasource.add({
+                imageUrl:dataItem.imageUrl,id:dataItem.id,unitRate:dataItem.unitRate,name:dataItem.name,quantity:dataItem.quantity
+            });
+
+            amount=dataItem.unitRate
+
+            var water=dataItem.quantity*amount;
+            cartListInit('add',water)
+        }
+    }
+
+    function atc(id)
+    {
+    	var maindataItem=mainListDatasource.get(id);
+    	name=maindataItem.name
+    	imageUrl=maindataItem.imageUrl
+    	unitRate=maindataItem.unitRate
+
+        var dataItem=atcDatasource.get(id);
+        if(dataItem==undefined){ //Doesnt exist
+            atcDatasource.add({imageUrl: imageUrl,id:id,unitRate:unitRate,name:name,quantity:1});
+            cartBadgeNumber+=1;
+            $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber});
+        }
+        else{
+            var quantity=dataItem.quantity;
+            quantity=quantity+1;
+            atcDatasource.remove(dataItem);
+            atcDatasource.add({imageUrl:imageUrl,id:id,unitRate:unitRate,name:name,quantity:quantity});
+
+        }
+        cartListInit('add',unitRate);
+        mainListDatasource.fetch()
+
+       // $.snackbar({content:name+" added to cart"});
+
+    }
+
+    function checkoutPreprocess(){
+        productsjson  = [];
+        finalOrder={};
+        finalOrder["orgabbr"] = localStorage.getItem('curr_org_abbr');
+        finalOrder['comment'] = "NA";
+        finalOrder['email'] = localStorage.getItem('mail');
+        finalOrder['orderItems'] = [];
+
+
+        for(var i=0;i<atcDatasource.total();i++){
+            var dataItem=atcDatasource.at(i)
+            if(dataItem.quantity==0){
+                // $.snackbar({content:'Please insert product quantity greater than zero'});
+                return;
+            }
+            var elem = {};
+            elem['name'] = dataItem.name;
+            elem['quantity'] = dataItem.quantity;
+            elem['price'] = dataItem.unitRate;
+            finalOrder['orderItems'].push(elem);
+            //console.log(dataItem);
+            // console.log(dataItem.name);
+            // console.log(dataItem.quantity);
+            // console.log(dataItem.unitRate);
+            productsjson.push(dataItem.toJSON());
+        }
+        var flag = false;
+        console.log(finalOrder);
+        // console.log(productsjson);
+        atcDatasource.data([]);
+        totalcart=0.0;
+        cartBadgeNumber=0;
+        $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber});
+        console.log(JSON.stringify(finalOrder));
+        var OrderId;
+        $.ajax({
+                url: 'http://ruralict.cse.iitb.ac.in/ruralict/app/orders/add',
+                type: 'POST',
+                data: JSON.stringify(finalOrder),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'JSON',
+                async: false,
+                success: function(msg)
+                {
+                  if(msg.status == "Success")
+                  {
+                  	flag = true;
+
+                    localStorage.setItem('orderId',msg.orderId);
+                    OrderId = msg.orderId;
+                    console.log("order id is "  + OrderId);
+                  }
+                      if(msg.status=="Failure")
+                        {
+                            alert(msg.error);
+                            window.location.href = "#drawer-home";
+                            return;
+                        }
+                        else if(msg.status=="price increased")
+                        {
+
+                            var answer = "";
+                            for(var i =0;i< msg.products.length;i++)
+                            {
+                                answer = answer + msg.products[i].name+" : "+msg.products[i].unitRate + "\n";
+                            }
+                            alert("Price of some items have increased. The updated list is \n"+answer);
+                            return;
+                        }
+                        else if(msg.status=="products has been disabled"){
+                            alert(msg.error);
+                            return;
+                        }
+
+                }
+            });
+        if(flag){
+		        checkoutDatasource.add({
+		            orderId:OrderId,
+		            registeredTime:new Date().toISOString(),
+		            orderItems:productsjson
+		        });
+		       // if(msg.orderId!=null)
+		            $("#finalOrderId").text(OrderId)
+		            //window.location.hash='#checkout-page';
+		            app.navigate('#checkout-page')
+		            cartListInit();
+		            mainListDatasource.fetch();
+		      }
+    }
+
+
+//=========END CART PAGE ADDON FUNCTIONS==========
+
+//============START MAIN PAGE ADDON FUNCTIONS========
+
+function minusMainFunc(id){
+    var mainquantity=parseInt($("#mainquantity"+id).text());
+    mainquantity=mainquantity-1
+    if(mainquantity<=0){
+        mainquantity=0;
+    }
+    $("#mainquantity"+id).text(mainquantity);
+
+    var dataItem=atcDatasource.get(id);
+    if(dataItem==undefined){ //Click minus for first time
+        return;
+    }
+
+    var imageUrl=dataItem.imageUrl;
+    var quantity1=dataItem.quantity;
+    var unitRate=dataItem.unitRate;
+    var name=dataItem.name;
+
+    quantity1=quantity1-1;
+    if(quantity1<=0){
+        quantity1=0
+        cartBadgeNumber-=1;
+        $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber});
+    }
+
+    atcDatasource.remove(dataItem);
+    atcDatasource.add({
+        imageUrl:imageUrl,id:id,unitRate:unitRate,name:name,quantity:quantity1
+    });
+
+
+    if(dataItem.quantity<=0){
+        cartListInit('sub',0)
+    }
+    else if(dataItem.quantity==1){ //Remove from dataSource
+        atcDatasource.remove(atcDatasource.get(id))
+        cartListInit('sub',unitRate);
+    }
+    else{
+        cartListInit('sub',unitRate);
+    }
+
+}
+
+
+function plusMainFunc(id){
+    var mainquantity=parseInt($("#mainquantity"+id).text());
+    mainquantity=mainquantity+1
+    $("#mainquantity"+id).text(mainquantity)
+
+    var maindataItem=mainListDatasource.get(id)
+    name=maindataItem.name
+    imageUrl=maindataItem.imageUrl
+    unitRate=maindataItem.unitRate
+
+    var dataItem=atcDatasource.get(id);
+    if(dataItem==undefined){
+        atcDatasource.add({imageUrl:imageUrl,id:id,unitRate:unitRate,name:name,quantity:1});
+        cartBadgeNumber+=1
+        $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber}); //For cart badge
+    }
+    else{
+        if(dataItem.quantity==0){ //For cart badge
+            cartBadgeNumber+=1
+            $("#cart-badge").kendoMobileButton({badge:cartBadgeNumber});
+        }
+        var quantity=dataItem.quantity;
+        quantity=quantity+1
+        atcDatasource.remove(dataItem);
+        atcDatasource.add({imageUrl:imageUrl,id:id,unitRate:unitRate,name:name,quantity:quantity});
+    }
+
+    cartListInit('add',unitRate)
+
+
+}
+
+function getCartQuantity(id) {
+    var dataItem=atcDatasource.get(id)
+    if(dataItem==undefined){
+        return 0
+    }
+    else{
+        return dataItem.quantity;
+    }
+}
+
+
+// function clickRow(id){
+//     var dataItem=mainListDatasource.get(id)
+
+//     $("#adhocpara").empty();
+
+//     var mv=$("#modal").data("kendoMobileModalView");
+//     mv.scroller.reset()
+
+//     var template = kendo.template($("#modal-template").html());
+
+//     var htmlCode=template(dataItem);
+//     $("#adhocpara").append(htmlCode)
+
+//     mv.shim.popup.options.animation.open.duration = 400;
+//     mv.shim.popup.options.animation.open.effects = "slideIn:left";
+//     mv.shim.popup.options.animation.close.duration = 400;
+
+//     mv.open();
+// }
+
+
+
+//END MAIN PAGE ADDON FUNCTIONS======
+
+
+
+// ==============START STATIC FUNCTIONS=============
+
+    function convertUnitRate(x){
+
+    	if(typeof(x)!='string'){
+    		x=x.toString()
+    	}
+        var afterPoint = '';
+        if(x.indexOf('.') > 0)
+           afterPoint = x.substring(x.indexOf('.'),x.length);
+        x = Math.floor(x);
+        x=x.toString();
+        var lastThree = x.substring(x.length-3);
+        var otherNumbers = x.substring(0,x.length-3);
+        if(otherNumbers != '')
+            lastThree = ',' + lastThree;
+        var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree + afterPoint;
+
+        return res;
+
+    }
+
+    function feedbackCheck() {
+        if($('#dropdownFeedback').val()==1){
+            return;
+        }
+
+        var feedbackText=$('#feedbackTextArea').val()
+
+        if(feedbackText == null || feedbackText.trim()==''){
+            return;
+        }
+
+
+
+
+
+
+        var e=document.getElementById("dropDownDest");
+    var obj={};
+    var feedbackstring= feedbackText+"----feedback frm mobile version ";
+
+    console.log(feedbackstring);
+    obj['content']=feedbackstring;
+    obj['phonenumber']=localStorage.getItem('phonenumber');
+    console.log(obj);
+
+    $.ajax({
+
+                url: 'http://ruralict.cse.iitb.ac.in/ruralict/app/webfeedback',
+                type: 'POST',
+                crossDomain: true,
+                data: JSON.stringify(obj),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                async: false,
+                success: function(msg) {
+                    alert("feedback submitted successfully");
+                    alert(msg.response);
+                }
+            });
+
+
+
+
+
+
+
+
+
+        //window.location.hash="#drawer-home"
+        app.navigate('#drawer-home')
+    }
+
+    // function referPeople(){
+
+    //     email=$("#emailRefer").val()
+    //     phone=$("#contactRefer").val()
+    //     selectedOrgAbbr=$('#dropdownReferral').val()
+
+    //     if(email==null || email.trim()=='' || phone.trim()=='' || phone==null){
+    //         $.snackbar({content:'Please fill all the mandatory details correctly',style:'toast',htmlAllowed:'true'});
+    //         return;
+    //     }
+    //     if(validateEmail(email)==false){
+    //         $.snackbar({content:'Please enter a valid email ID',style:'toast',htmlAllowed:'true'});
+    //         return;
+    //     }
+
+    //     if(phone.length!=10){
+    //         $.snackbar({content:'Please enter a valid 10 digit mobile number',style:'toast',htmlAllowed:'true'});
+    //         return;
+    //     }
+
+    //     if(validatePhone(phone)==false){
+    //         $.snackbar({content:'Please enter a valid Indian phone number',style:'toast',htmlAllowed:'true'});
+    //         return;
+    //     }
+
+    //     if(selectedOrgAbbr==1){
+    //           $.snackbar({content:'Please select an organisation',style:'toast',htmlAllowed:'true'});
+    //           return;
+    //     }
+
+    //     phone="91"+phone
+    //     jsonData={
+    //             "refemail":"tejas.lodaya1@gmail.com",
+    //             "phonenumber":phone,
+    //             "abbr":selectedOrgAbbr,
+    //             "email":email
+    //         }
+
+    //     var settings = {
+    //       "async": true,
+    //       "crossDomain": true,
+    //       "url": main_url+"app/refer",
+    //       "method": "POST",
+    //       "headers": {
+    //         "Access-Control-Allow-Origin":"*",
+    //         "authorization": "Basic cnVyYWxpY3QuaWl0YkBnbWFpbC5jb206cGFzc3dvcmQ=",
+    //         "content-type": "application/json",
+    //         "cache-control": "no-cache",
+    //         "postman-token": "8d962fc4-1074-e025-c92f-a9e4cff02788"
+    //       },
+    //       "processData": false,
+    //       "data": JSON.stringify(jsonData)
+    //     }
+
+    //     $.ajax(settings).done(function (response) {
+    //         if(response.response=='success'){
+    //             $.snackbar({content:'Referred successfully'});
+    //             var dropDownList=$("#dropdownReferral").data("kendoDropDownList")
+    //             dropDownList.value('1')
+    //             dropDownList.trigger('change')
+
+    //             $('#emailRefer').val('')
+    //             $('#contactRefer').val('')
+    //             return;
+    //         }
+    //         else{
+    //             $.snackbar({content:response.response})
+    //             return
+    //         }
+
+    //     });
+
+    // }
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function validatePhone(phone){
+        var re=/^[789]\d{9}$/;
+        return re.test(phone);
+    }
+
+
+    function getFormattedDate(dateStr){
+        return new Date(dateStr).toDateString();
+    }
+
+    function getFormattedTime(dateStr){
+        return new Date(dateStr).toLocaleTimeString();
+    }
+
+
+    function closeModalViewLogin(){
+        $("#drawer-contact").kendoMobileModalView("close");
+    }
+
+    function jumpToProfile(){
+        app.navigate('#drawer-profile')
+        $("#nav-drawer").data("kendoMobileDrawer").hide();
+        //$("#orderscollapse").data("kendoMobileCollapsible").collapse();
+    }
+    function jumpToOrg()
+    {
+        app.navigate('#drawer-organisations')
+        $("#nav-drawer").data("kendoMobileDrawer").hide();
+    }
+
+	function jumpToPlaced(){
+		//window.location.hash="#drawer-orders"
+        app.navigate('#drawer-orders')
+	    $("#nav-drawer").data("kendoMobileDrawer").hide();
+        $("#orderscollapse").data("kendoMobileCollapsible").collapse();
+	}
+
+	function jumpToProcess(){
+		//window.location.hash="#drawer-process"
+        app.navigate('#drawer-process')
+		$("#nav-drawer").data("kendoMobileDrawer").hide();
+        $("#orderscollapse").data("kendoMobileCollapsible").collapse();
+	}
+
+    function jumpToDelivered(){
+        //window.location.hash="#drawer-delivered"
+        app.navigate('#drawer-delivered')
+        $("#nav-drawer").data("kendoMobileDrawer").hide();
+        $("#orderscollapse").data("kendoMobileCollapsible").collapse();
+    }
+
+	function jumpRefreshHome(){
+		//window.location.hash="#drawer-home"
+        app.navigate('#drawer-home')
+        mainListDatasource.fetch();
+        $("#orderscollapse").data("kendoMobileCollapsible").collapse();
+        $("#helpcollapse").data("kendoMobileCollapsible").collapse();
+	}
+
+	function contactUsModal(){
+		$("#drawer-contact").kendoMobileModalView("open");
+		$("#nav-drawer").data("kendoMobileDrawer").hide();
+        $("#helpcollapse").data("kendoMobileCollapsible").collapse();
+	}
+
+     function closeModalView(e) {
+        var modalView = e.sender.element.closest("[data-role=modalview]").data("kendoMobileModalView");
+        modalView.close();
+    }
+
+    function getRowTotal(unitRate,quantity){
+        unitRate=parseFloat(unitRate)
+        quantity=parseFloat(quantity)
+        return unitRate*quantity
+    }
+
+    function closeCancellationModal(){
+        $("#cancelOrderView").kendoMobileModalView("close");
+    }
+
+    function showCancelTextView(){
+        $("#cancelCommentDiv").css("display","block")
+    }
+
+    function hideCancelTextView(){
+        $("#cancelCommentDiv").css("display","none")
+    }
+
+
+    function cancelOkModal(){
+
+        var checkedRadio=$('input[name=cancelradio]:checked').val();
+        if(checkedRadio==undefined){
+            $.snackbar({content:"Please select an option"});
+            return;
+        }
+
+        if(checkedRadio==5){
+            if($('#cancelCommentTextView').val()==null || $('#cancelCommentTextView').val().trim()==''){
+                $.snackbar({content:"Comment required"});
+                return;
+            }
+        }
+
+        switch(checkedRadio){
+            case '1':
+                console.log("Not interested any more")
+                break;
+            case '2':
+                console.log("Order delivery delayed")
+                break;
+            case '3':
+                console.log('Ordered duplicate items by mistake')
+                break;
+            case '4':
+                console.log('Purchased wrong item')
+                break;
+            case '5':
+                console.log($('#cancelCommentTextView').val()) //Reason for cancellation. Send when cancelling-POST call
+                break;
+
+        }
+
+        $.snackbar({content:'Order No: '+cancelOrderId+' cancelled successfully'})
+
+        $('input[name="cancelradio"]').prop('checked', false);
+        $("#cancelCommentTextView").val('');
+        $("#cancelCommentDiv").css('display','none');
+        var dataItem=checkoutDatasource.get(cancelOrderId)
+        checkoutDatasource.remove(dataItem)
+        closeCancellationModal();//TODO: Hit Cancel order api
+        placedOrdersInit();
+
+
+    }
+
+    function feedbackFormClear(e) {
+        var dropDownList=$("#dropdownFeedback").data("kendoDropDownList")
+        dropDownList.value('1')
+        dropDownList.trigger("change")
+
+        $('#feedbackTextArea').val('')
+    }
+
+
+    function referralFormClear(e){
+
+        var dataSource=new kendo.data.DataSource({
+            transport:{
+                read:{
+                  async: true,
+                  crossDomain: true,
+                  url: main_url+"app/versionchecknew",
+                  method: "POST",
+                  headers: {
+                    "Access-Control-Allow-Origin":"*",
+                    "authorization": "Basic cnVyYWxpY3QuaWl0YkBnbWFpbC5jb206cGFzc3dvcmQ=",
+                    "content-type": "application/json",
+                    "cache-control": "no-cache",
+                    "postman-token": "407d2488-0ad1-4edd-3adf-f4b960bfeb5f"
+                  },
+                  processData: false,
+                  data: "{\"phonenumber\":\"918892246348\",\"version\":\"11\"}"//TODO: Get phonenumber from versionchecknew
+                }
+            },
+            schema:{
+                parse:function(response){
+                    return response.memberships
+                }
+            }
+        });
+
+        //TODO: Remove this after CORS enabled
+        //dataSource.add({organization:"Select an organisation",abbr:"1"})
+        $('#dropdownReferral').kendoDropDownList({
+            dataSource:dataSource,
+            dataTextField:"organization",
+            dataValueField:"abbr"
+        })
+
+        var dropDownList=$("#dropdownReferral").data("kendoDropDownList")
+        dropDownList.value("1")
+        dropDownList.trigger('change')
+
+
+        $('#emailRefer').val('')
+        $('#contactRefer').val('')
+    }
+
+    function organisationRadioView(){
+
+       var dataSource=new kendo.data.DataSource({
+            transport:{
+                read:{
+                  async: true,
+                  crossDomain: true,
+                  url: main_url+"app/versionchecknew",
+                  method: "POST",
+                  headers: {
+                    "Access-Control-Allow-Origin":"*",
+                    "authorization": "Basic cnVyYWxpY3QuaWl0YkBnbWFpbC5jb206cGFzc3dvcmQ=",
+                    "content-type": "application/json",
+                    "cache-control": "no-cache",
+                    "postman-token": "407d2488-0ad1-4edd-3adf-f4b960bfeb5f"
+                  },
+                  processData: false,
+                  data: "{\"phonenumber\":\"918892246348\",\"version\":\"11\"}"//TODO: Get phonenumber from versionchecknew
+                }
+            },
+            schema:{
+                parse:function(response){
+                    return response.memberships
+                }
+            }
+        });
+
+
+    }
+    function changeOrg(abbr, name)
+    {
+        localStorage.setItem('curr_org_name',name);
+        localStorage.setItem('curr_org_abbr',abbr);
+
+        app.navigate('#drawer-home')
+        mainListDatasource.fetch();
+        $("#orderscollapse").data("kendoMobileCollapsible").collapse();
+        $("#helpcollapse").data("kendoMobileCollapsible").collapse();
+        window.location.reload();
+       // $("#drawer-organisations").data("kendoMobileCollapsible").collapse();
+
+
+    }
+
+    function setOrganisation()
+    {
+      var list = JSON.parse(localStorage.getItem('organisationlist'));
+      var but = document.getElementsByClassName('org_rb');
+      for(var i = 0;i<but.length;i++)
+      {
+        if(document.getElementById('rb_'+i).checked){
+           changeOrg(list['organizations'][i].organizationAbbr,list['organizations'][i].organizationName);
+
+        }
+
+      }
+    }
+
+    function leaveOrganisation(){
+
+    //     var checkedRadio=$('input[name="radio"]:checked').val()
+    //     if(checkedRadio==undefined){
+    //         $.snackbar({content:'Please check any one option',style:'toast'});
+    //         return;
+    //     }
+
+    //     var jsonData={"phonenumber":"918892246348","abbr":checkedRadio}
+    //     console.log(checkedRadio)
+    //     var settings = {
+    //       "async": true,
+    //       "crossDomain": true,
+    //       "url": main_url+"app/delete",
+    //       "method": "POST",
+    //       "headers": {
+    //         "Access-Control-Allow-Origin":"*",
+    //         "authorization": "Basic cnVyYWxpY3QuaWl0YkBnbWFpbC5jb206cGFzc3dvcmQ=",
+    //         "content-type": "application/json",
+    //         "cache-control": "no-cache",
+    //         "postman-token": "162a8d6d-ade9-678c-7406-cd0bbe979cf2"
+    //       },
+    //       "processData": false,
+    //       "data": JSON.stringify(jsonData),
+    //       "statusCode":{
+    //         500:function(){
+    //             $.snackbar({content:'Internal Error!',style:'toast'});
+    //         }
+    //       }
+    //     }
+
+    //     $.ajax(settings).done(function (response) {
+
+    //         if(response.response=="error"){
+    //             $.snackbar({content:'No such Organisation exist!',style:'toast'});
+    //             return;
+    //         }
+
+    //         $.snackbar({content:response.response,style:'toast'});
+    //         organisationRadioView();
+    //     });
+
+    // }
+
+
+      var obj = {};
+      obj['email'] = localStorage.getItem('mail');
+     var list = JSON.parse(localStorage.getItem('organisationlist'));
+     var but = document.getElementsByClassName('org_rb');
+
+      for(var i = 0;i<but.length;i++)
+      {
+        if(document.getElementById('rb_'+i).checked)
+        {
+          obj['abbr'] = list['organizations'][i].organizationAbbr;
+        }
+      }
+      console.log(JSON.stringify(obj));
+      $.ajax({
+              url: 'http://ruralict.cse.iitb.ac.in/ruralict/app/deleteMembership',
+              crossDomain: true,
+              type: 'POST',
+              data: JSON.stringify(obj),
+              contentType: 'application/json; charset=utf-8',
+              dataType: 'json',
+              async: false,
+              success: function(msg) {
+                alert(msg.response);
+                if(msg.response=="Membership removed"){
+
+                }
+              }
+          });
+
+      var new_obj = {};
+      new_obj['phonenumber'] = "91" + localStorage.getItem('phonenumber');
+      new_obj['password'] = localStorage.getItem('userpassword');
+      $.ajax({
+              url: 'ruralict.cse.iitb.ac.in/ruralict/app/loginWeb',
+              crossDomain: true,
+              type: 'POST',
+              data: JSON.stringify(new_obj),
+              contentType: 'application/json; charset=utf-8',
+              dataType: 'json',
+              async: false,
+              success: function(msg) {
+                if(msg.status="success")
+                  localStorage.setItem('organisationlist',JSON.stringify(msg));
+                  app.navigate('#drawer-home')
+                    mainListDatasource.fetch();
+                    $("#orderscollapse").data("kendoMobileCollapsible").collapse();
+                    $("#helpcollapse").data("kendoMobileCollapsible").collapse();
+                   // window.location.reload();
+              }
+          });
+    }
+
+    function applyFilter(category) {
+        $("#mainViewNavbar").data("kendoMobileNavBar").title(category);
+        $("#right-drawer").data('kendoMobileDrawer').hide();
+        setTimeout(function(){
+            mainListDatasource.filter({field:'category',operator:'eq',value:category})
+            $('#mainList').data('kendoMobileListView').scroller().reset();
+            lastHitCategoryId=productTypeList.indexOf(category);
+        },0);
+
+    }
+
+    function showRightDrawer(){
+        $("#right-drawer").data('kendoMobileDrawer').show();
+    }
+
+    //=======END STATIC FUNCTIONS====
+</script>
+
+<script>
+    var app = new kendo.mobile.Application(document.body, { skin:"nova",platform:"ios"});
+</script>
+</body>
+</html>

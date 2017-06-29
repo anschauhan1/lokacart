@@ -1,0 +1,19 @@
+{
+  "cartItems": [
+    {
+      "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/Paneer_545.jpg",
+      "id": "407",
+      "unitRate": "340.0",
+      "name": "200 grams of Paneer",
+      "quantity":"1"
+    },
+    {
+      "imageUrl": "http://ruralict.cse.iitb.ac.in/Downloads/images/752.jpg",
+      "id": "487",
+      "unitRate": "120.0",
+      "name": "500 grams of khoa",
+      "quantity":"2"
+
+    }
+  ]
+}

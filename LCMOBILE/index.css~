@@ -1,0 +1,452 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+input,textarea{
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+input::after,
+input::before,
+textarea::after,
+textarea::before{
+  box-sizing: border-box;
+}
+fieldset {
+  margin: 0 0 3rem;
+  padding: 0;
+  border: none;
+}
+
+.form-radio,
+.form-group {
+  position: relative;
+  margin-top: 2.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.form-inline > .form-group,
+.form-inline > .btn {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.form-help {
+  margin-top: 0.125rem;
+  margin-left: 0.125rem;
+  color: #337ab7;
+  font-size: 0.8rem;
+}
+.form-group .form-help {
+  position: absolute;
+  width: 100%;
+}
+.form-group input {
+  height: 1.9rem;
+}
+.form-group textarea {
+  resize: none;
+}
+.form-group .control-label {
+  position: absolute;
+  top: 0.25rem;
+  pointer-events: none;
+  padding-left: 0.125rem;
+  z-index: 1;
+  color: #b3b3b3;
+  font-size: 1rem;
+  font-weight: normal;
+  -webkit-transition: all 0.28s ease;
+  transition: all 0.28s ease;
+}
+.form-group .bar {
+  position: relative;
+  border-bottom: 0.0625rem solid #999;
+  display: block;
+}
+.form-group .bar::before {
+  content: '';
+  height: 0.125rem;
+  width: 0;
+  left: 50%;
+  bottom: -0.0625rem;
+  position: absolute;
+  background:#337ab7;
+  -webkit-transition: left 0.28s ease, width 0.28s ease;
+  transition: left 0.28s ease, width 0.28s ease;
+  z-index: 2;
+}
+#drawer-feedback .form-group textarea {
+      display: block;
+    background: #e8f5e9;
+    font-size: 1rem;
+    border: none;
+    line-height: 1.9;
+    width: 100%;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
+}
+.form-group input:focus,
+.form-group input:valid,
+.form-group input.form-file,
+.form-group input.has-value,
+.form-group textarea:focus,
+.form-group textarea:valid,
+.form-group textarea.form-file,
+.form-group textarea.has-value {
+  color: #333;
+}
+.form-group input:focus ~ .control-label,
+.form-group input:valid ~ .control-label,
+.form-group input.form-file ~ .control-label,
+.form-group input.has-value ~ .control-label,
+.form-group textarea:focus ~ .control-label,
+.form-group textarea:valid ~ .control-label,
+.form-group textarea.form-file ~ .control-label,
+.form-group textarea.has-value ~ .control-label {
+  font-size: 0.8rem;
+  color: gray;
+  top: -1rem;
+  left: 0;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+}
+.form-group input:focus ~ .control-label,
+.form-group textarea:focus ~ .control-label {
+  color: #337ab7;
+}
+.form-group input:focus ~ .bar::before,
+.form-group textarea:focus ~ .bar::before {
+  width: 100%;
+  left: 0;
+}
+
+/*-------------------NEW CSS--------------*/
+.greenround_btn button{
+	border-radius: 50% !important;
+    background-color: #4caf50;
+    padding: 3px 8px;
+    position: relative;
+    border: none;
+
+}
+
+.greenround_btn button i{
+	font-size: 0.5em;
+    top: -2px;
+    color: #fff;
+    position: relative;
+}
+.main_product h3 , ul#cartlist h4{
+	font-weight: 400;
+    font-size: 0.8em;
+    color: grey;
+}
+.main_product .inr_symbol , ul#cartlist .inr_symbol {
+    color: #4caf50;
+    font-size: 14px;
+    /*position: relative;*/
+    top: 30px;
+    /*display: block;*/
+}
+
+ul#cartlist .inr_symbol{
+	top: 2px;
+}
+
+.km-nova .km-filter-wrap{
+	background: #f2f2f2;
+    border-radius: 0;
+    padding: 0.1em 1em;
+}
+.km-filter-form{
+	padding: 1em 0 0.5em;
+}
+.km-widget .km-filter-wrap:after{
+	right: 0.4em;
+    top: 0.22em;
+    content: "\f002";
+    font-size: 1.4em;
+    font-family: 'FontAwesome';
+    color: #777;
+    position: absolute;
+}
+.km-widget .km-filter-wrap:before{
+	content: "";
+}
+.km-collapsible-header {
+    color: #555 !important;
+    background: white !important;
+    border-color: white !important;
+}
+.km-nova .km-filter-wrap>input{
+	padding: .5em 0;
+}
+#drawer-home #mainViewNavbar{
+	background: #4caf50;
+	/*color: #4caf50;*/
+}
+.km-scroll-container{
+	background-color: #fff;
+}
+.km-nova .km-drawer .km-list>li, 
+.km-nova .km-drawer .km-list>li .km-icon, 
+.km-nova .km-drawer .km-list>li>.km-listview-link,
+.km-nova .km-collapsible-header h3{
+	color: #555;
+	font-family: 'Roboto', sans-serif;
+}
+.km-nova .km-cart:after {
+    content: "";
+    background: url(../cart.svg) !important;
+    background-size: cover;
+    width: 1.5em;
+    height: 3em;
+    display: block;
+    /* position: relative; */
+    /* left: 0px; */
+    /* top: 0; */
+    background-repeat: no-repeat !important;
+}
+/*#mainViewNavbar .km-view-title{
+	color: #4caf50;
+}*/
+.km-nova .km-badge{
+	background: #fff;
+	color: #4caf50;
+}
+th{
+	box-shadow: none;
+}
+#leftnav_drawer_img{
+	width: 100%;
+    height: 30vh;
+    position: relative;
+    top: 22px;
+    border: 1px solid #eee;
+}
+
+#leftnav_drawer_img img{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#leftnav_drawer_div{
+	width: 100%;
+	height: 85vh;
+}
+.navbar_green, .tabstrip{
+	background: #4caf50 !important;
+}
+#checkoutFooter{
+	background: #e8f5e9 !important;
+}
+.tabstrip a.km-button{
+	background: #4caf50 !important;
+}
+.tabstrip span{
+	font-size: 1.2em !important;
+}
+.tabstrip span.km-text{
+	font-size: 2em !important;
+}
+
+div form div input{
+	font:400 1em "Helvetica Neue",Helvetica,"Roboto Light",Arial,Verdana,sans-serif;
+}
+
+#mainList h4 {
+  margin-top: .2em;
+  margin-bottom: .2em;
+}
+
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+th,td{
+    text-align: center;
+    vertical-align: middle;
+    padding:15px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+ /*   background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: 400;
+    box-shadow: none;
+}
+
+input.atcbutton {
+    display:block;
+    margin:0 auto;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+
+.undoText{
+  background: inherit;
+  display: inline-block;
+  border: none;
+  font-size: inherit;
+  text-transform: uppercase;
+  color: #ffeb3b;
+  margin: 0px 0px 0px 24px;
+  padding: 0px;
+  float:right;
+  min-width: min-content;
+}
+
+.mainlistImage , ul#cartlist li img.cartpro_image{
+    border-radius: 0px;
+    /* border-radius: 50%; */
+    width: 8rem;
+    height: 5.8rem;
+    /* border-width: 1px; */
+    border: none; 
+    float: left;
+    margin-right: 1rem;
+    object-fit: cover;
+}
+
+.km-nova .km-list>li {
+    font-size: 1.2em;
+    padding-left: .89em;
+    background: 0 0;
+  /*  border-radius: 0;
+    border-width: 1px 0 0;
+    border-style: solid;*/
+    border: none !important;
+    line-height: 1.5em;
+    padding: 0.79em .84em 1.08em .84em;
+}
+.km-listview-label:after, .km-listview-link:after{
+	display:none;
+}
+
+.km-collapsible{
+    margin:0em 0 !important;
+}
+
+/*.km-collapsible-header{
+    color: #2a2d40 !important;
+    background: #2a2d40 !important;
+    border-color:#3c415b !important;
+}*/
+
+.km-collapsible-content{
+        color: #ffffff !important;
+    background: #f3f3f3 !important;
+    border-color: #eee !important;
+}
+
+/*.km-collapsible-header h3{
+    color:white !important;
+}*/
+
+.paddingHack{
+    padding-left: .89em !important;
+    padding-top: 0.5em !important;
+    padding-right: 0.7em !important;
+    padding-bottom: 0.5em !important;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    color: #333;
+    background-color: #333;
+}
+
+.cancelRadioClass{
+    font-size:0.9em !important;
+}
+
+.km-vertical-scrollbar{
+    visibility: hidden !important;
+}
+
+.km-ios .km-badge,
+.km-ios7 .km-badge,
+.km-blackberry .km-badge,
+.km-android .km-badge,
+.km-wp .km-badge,
+.km-flat .km-badge,
+.km-badge{
+    top: 0.2em !important;
+    right: 0em !important;
+}
+.totalamount_span{
+	float:right; 
+	font-size:small; 
+	color: #4CAF50;
+	position: relative; 
+	bottom: -6px;
+}
+#adhoctable .order_table h3{
+	padding: 1em 1em;
+}
+.km-content.km-widget.km-scroll-wrapper{
+	background: #fff !important;
+}
+#adhoctable .order_table{
+	border: 1px solid #eee;
+	margin-top: 1.5em;
+} 
+#adhoctable .order_table tr{
+	box-shadow: none;
+}
+#drawer-feedback .k-dropdown-wrap.k-state-default{
+	background: green;
+    border-radius: 0;
+    /* color: white; */
+    border: none;
+}
+#drawer-feedback .k-input{
+	color: white;
+    font-family: 'roboto';
+    font-size: 0.8em;
+}
+.inrsymbol_div{
+	    top: 42px;
+    position: relative;
+}
+#checkoutFooter .tabstrip .km-icon{
+	display: none;
+}
+#drawer-contact .km-text{
+	color: #fff;
+	
+}#drawer-organisations .km-button{
+	background:#4caf50;
+}
+#drawer-organisations .km-text{
+	font-size:0.8em;
+}
+#drawer-organisations .km-icon{
+	display:none;
+}
+#drawer-organisations .km-button{
+	background:#4caf50;
+}
+

@@ -1,0 +1,62 @@
+{
+  "products": [
+    {
+      "Grains": [
+        {
+          "quantity": "5109",
+          "name": "Green Moong",
+          "stockManagement": "false",
+          "unitRate": "200.0",
+          "description": "",
+          "id": "352"
+        },
+        {
+          "quantity": "3117",
+          "name": "Split Green Moong",
+          "stockManagement": "false",
+          "unitRate": "210.0",
+          "description": "",
+          "id": "353"
+        }
+      ]
+    },
+    {
+      "Spices": [
+        {
+          "quantity": "2665",
+          "name": "Turmeric",
+          "stockManagement": "false",
+          "unitRate": "340.0",
+          "description": "",
+          "id": "355"
+        }
+      ]
+    },
+    {
+      "Flours": [
+        {
+          "quantity": "3061",
+          "name": "Jaggery",
+          "stockManagement": "false",
+          "unitRate": "110.0",
+          "description": "",
+          "id": "354"
+        },
+        {
+          "quantity": "5004",
+          "name": "Whole Wheat Aata",
+          "stockManagement": "false",
+          "unitRate": "60.0",
+          "description": "",
+          "id": "356"
+        }
+      ]
+    },
+    {
+      "Pulses": []
+    },
+    {
+      "Cereals": []
+    }
+  ]
+}
